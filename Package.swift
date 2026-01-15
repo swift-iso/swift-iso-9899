@@ -11,29 +11,95 @@ let package = Package(
         .visionOS(.v26),
     ],
     products: [
+        // Core: errno, string memory ops, math - minimal libc surface
+        .library(
+            name: "ISO 9899 Core",
+            targets: ["ISO 9899 Core"]
+        ),
+        // Full: Core + ctype, stdlib allocation/environment
         .library(
             name: "ISO 9899",
             targets: ["ISO 9899"]
-        )
+        ),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-primitives/swift-test-primitives.git", from: "0.0.1")
+        .package(path: "../../swift-primitives/swift-error-primitives"),
+        .package(path: "../../swift-primitives/swift-test-primitives"),
     ],
     targets: [
-        // C module wrapping platform math library
+        // MARK: - C Shim Modules (Core)
+
         .target(
             name: "CISO9899Math",
             dependencies: [],
             publicHeadersPath: "include"
         ),
-
-        // Swift interface to ISO 9899 mathematical functions
         .target(
-            name: "ISO 9899",
-            dependencies: ["CISO9899Math"]
+            name: "CISO9899Errno",
+            dependencies: [],
+            publicHeadersPath: "include"
+        ),
+        .target(
+            name: "CISO9899String",
+            dependencies: [],
+            publicHeadersPath: "include"
         ),
 
-        // Tests
+        // MARK: - C Shim Modules (Hosted)
+
+        .target(
+            name: "CISO9899Ctype",
+            dependencies: [],
+            publicHeadersPath: "include"
+        ),
+        .target(
+            name: "CISO9899Stdlib",
+            dependencies: [],
+            publicHeadersPath: "include"
+        ),
+
+        // MARK: - Swift Targets
+
+        // Core: errno, string memory ops, math
+        // Suitable for minimal/embedded-like environments with OS libc
+        .target(
+            name: "ISO 9899 Core",
+            dependencies: [
+                "CISO9899Math",
+                "CISO9899Errno",
+                "CISO9899String",
+                .product(name: "Error Primitives", package: "swift-error-primitives"),
+            ],
+            path: "Sources/ISO 9899 Core",
+            swiftSettings: [
+                .enableExperimentalFeature("Lifetimes"),
+            ]
+        ),
+
+        // Hosted: Core + ctype, stdlib (allocation, environment)
+        // Requires full hosted OS environment
+        .target(
+            name: "ISO 9899 Hosted",
+            dependencies: [
+                "ISO 9899 Core",
+                "CISO9899Ctype",
+                "CISO9899Stdlib",
+            ],
+            path: "Sources/ISO 9899 Hosted",
+            swiftSettings: [
+                .enableExperimentalFeature("Lifetimes"),
+            ]
+        ),
+
+        // Umbrella: Re-exports everything
+        .target(
+            name: "ISO 9899",
+            dependencies: ["ISO 9899 Hosted"],
+            path: "Sources/ISO 9899"
+        ),
+
+        // MARK: - Tests
+
         .testTarget(
             name: "ISO 9899 Tests",
             dependencies: [
