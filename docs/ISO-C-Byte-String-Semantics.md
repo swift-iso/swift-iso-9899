@@ -87,31 +87,28 @@ We define `Char = UInt8` unconditionally on all platforms:
 The package separates into two targets:
 
 **Core** (OS-core runtime assumed):
-- `ISO_9899.String` (owned)
+- `ISO_9899.String` (owned) with `init(adopting:)` and `init(copying:)`
 - `ISO_9899.String.View` (borrowed)
 - `ISO_9899.String.Char`
 - `ISO_9899.Errno`
 - String operations (copy, compare, search)
 
 **Hosted** (full C runtime assumed):
-- Convenience initializers: `init(copying:)`
 - `ISO_9899.Stdlib` (malloc, free, etc.)
 - `ISO_9899.Ctype`
 
 ### 4.1 Design Rationale
 
-The distinction is **not** "heap vs no-heap"—Core can own memory. The distinction is:
+The distinction is **not** "heap vs no-heap"—Core can own memory and use C string functions. The distinction is:
 
-- **Core**: Minimal OS runtime (TLS errno, Swift allocation)
+- **Core**: Minimal OS runtime (TLS errno, Swift allocation, basic C string operations)
 - **Hosted**: Full C library (malloc/free as C functions, ctype, stdio)
 
-The owned `String` type lives in Core because:
+All `ISO_9899.String` functionality lives in Core because:
 
 1. Swift's `UnsafeMutablePointer.allocate()` and `.deallocate()` are always available
-2. Ownership semantics are independent of which allocator provided the memory
-3. The `init(adopting:count:)` initializer takes ownership of externally-allocated buffers
-
-Convenience initializers like `init(copying:)` live in Hosted because they use C library functions (`strcpy`) for the copy operation.
+2. The C string shim (`iso9899_strcpy`) is already a Core dependency
+3. String ownership and copying are fundamental, not hosted-only concerns
 
 ## 5. Architectural Layering
 
