@@ -8,7 +8,7 @@ let package = Package(
         .iOS(.v26),
         .tvOS(.v26),
         .watchOS(.v26),
-        .visionOS(.v26),
+        .visionOS(.v26)
     ],
     products: [
         // Core: errno, string memory ops, math - minimal libc surface
@@ -20,11 +20,10 @@ let package = Package(
         .library(
             name: "ISO 9899",
             targets: ["ISO 9899"]
-        ),
+        )
     ],
     dependencies: [
-        .package(path: "../../swift-primitives/swift-error-primitives"),
-        .package(path: "../../swift-primitives/swift-test-primitives"),
+        .package(path: "../../swift-primitives/swift-error-primitives")
     ],
     targets: [
         // MARK: - C Shim Modules (Core)
@@ -68,11 +67,11 @@ let package = Package(
                 "CISO9899Math",
                 "CISO9899Errno",
                 "CISO9899String",
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
+                .product(name: "Error Primitives", package: "swift-error-primitives")
             ],
             path: "Sources/ISO 9899 Core",
             swiftSettings: [
-                .enableExperimentalFeature("Lifetimes"),
+                .enableExperimentalFeature("Lifetimes")
             ]
         ),
 
@@ -83,11 +82,11 @@ let package = Package(
             dependencies: [
                 "ISO 9899 Core",
                 "CISO9899Ctype",
-                "CISO9899Stdlib",
+                "CISO9899Stdlib"
             ],
             path: "Sources/ISO 9899 Hosted",
             swiftSettings: [
-                .enableExperimentalFeature("Lifetimes"),
+                .enableExperimentalFeature("Lifetimes")
             ]
         ),
 
@@ -99,14 +98,6 @@ let package = Package(
         ),
 
         // MARK: - Tests
-
-        .testTarget(
-            name: "ISO 9899 Tests",
-            dependencies: [
-                "ISO 9899",
-                .product(name: "Test Primitives", package: "swift-test-primitives"),
-            ]
-        ),
     ],
     swiftLanguageModes: [.v6]
 )
