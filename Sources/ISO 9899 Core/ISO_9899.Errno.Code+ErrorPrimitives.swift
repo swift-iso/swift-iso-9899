@@ -26,7 +26,7 @@ extension ISO_9899.Errno.Code {
     /// - Returns: The errno code if the error is POSIX, `nil` if Windows.
     @inlinable
     public init?(_ code: Error_Primitives.Error.Code) {
-        guard let posix = code.posixValue else { return nil }
+        guard let posix = code.posix else { return nil }
         self.init(rawValue: posix)
     }
 
@@ -37,7 +37,7 @@ extension ISO_9899.Errno.Code {
     @inlinable
     public init(posix code: Error_Primitives.Error.Code) {
         precondition(code.isPosix, "Expected POSIX error code, got Windows error")
-        self.init(rawValue: code.posixValue!)
+        self.init(rawValue: code.posix!)
     }
 }
 
