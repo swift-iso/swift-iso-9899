@@ -33,7 +33,7 @@ extension ISO_9899.Stdlib.Conversion {
     /// - Returns: The converted value.
     @inline(__always)
     public static func toDouble(_ string: UnsafePointer<CChar>) -> Double {
-        iso9899_atof(string)
+        unsafe iso9899_atof(string)
     }
 
     /// Converts a string to an int.
@@ -44,7 +44,7 @@ extension ISO_9899.Stdlib.Conversion {
     /// - Returns: The converted value.
     @inline(__always)
     public static func toInt(_ string: UnsafePointer<CChar>) -> Int32 {
-        iso9899_atoi(string)
+        unsafe iso9899_atoi(string)
     }
 
     /// Converts a string to a long.
@@ -55,7 +55,7 @@ extension ISO_9899.Stdlib.Conversion {
     /// - Returns: The converted value.
     @inline(__always)
     public static func toLong(_ string: UnsafePointer<CChar>) -> Int {
-        iso9899_atol(string)
+        unsafe iso9899_atol(string)
     }
 
     /// Converts a string to a long long.
@@ -66,7 +66,7 @@ extension ISO_9899.Stdlib.Conversion {
     /// - Returns: The converted value.
     @inline(__always)
     public static func toLongLong(_ string: UnsafePointer<CChar>) -> Int64 {
-        iso9899_atoll(string)
+        unsafe iso9899_atoll(string)
     }
 }
 
@@ -84,8 +84,8 @@ extension ISO_9899.Stdlib.Conversion {
         _ string: UnsafePointer<CChar>
     ) -> (value: Double, end: UnsafeMutablePointer<CChar>?) {
         var end: UnsafeMutablePointer<CChar>?
-        let value = iso9899_strtod(string, &end)
-        return (value, end)
+        let value = unsafe iso9899_strtod(string, &end)
+        return unsafe (value, end)
     }
 
     /// Converts a string to a float with end pointer.
@@ -99,8 +99,8 @@ extension ISO_9899.Stdlib.Conversion {
         _ string: UnsafePointer<CChar>
     ) -> (value: Float, end: UnsafeMutablePointer<CChar>?) {
         var end: UnsafeMutablePointer<CChar>?
-        let value = iso9899_strtof(string, &end)
-        return (value, end)
+        let value = unsafe iso9899_strtof(string, &end)
+        return unsafe (value, end)
     }
 
     /// Converts a string to a long with end pointer and base.
@@ -117,8 +117,8 @@ extension ISO_9899.Stdlib.Conversion {
         base: Int32 = 10
     ) -> (value: Int, end: UnsafeMutablePointer<CChar>?) {
         var end: UnsafeMutablePointer<CChar>?
-        let value = iso9899_strtol(string, &end, base)
-        return (value, end)
+        let value = unsafe iso9899_strtol(string, &end, base)
+        return unsafe (value, end)
     }
 
     /// Converts a string to a long long with end pointer and base.
@@ -135,8 +135,8 @@ extension ISO_9899.Stdlib.Conversion {
         base: Int32 = 10
     ) -> (value: Int64, end: UnsafeMutablePointer<CChar>?) {
         var end: UnsafeMutablePointer<CChar>?
-        let value = iso9899_strtoll(string, &end, base)
-        return (value, end)
+        let value = unsafe iso9899_strtoll(string, &end, base)
+        return unsafe (value, end)
     }
 
     /// Converts a string to an unsigned long with end pointer and base.
@@ -153,8 +153,8 @@ extension ISO_9899.Stdlib.Conversion {
         base: Int32 = 10
     ) -> (value: UInt, end: UnsafeMutablePointer<CChar>?) {
         var end: UnsafeMutablePointer<CChar>?
-        let value = iso9899_strtoul(string, &end, base)
-        return (value, end)
+        let value = unsafe iso9899_strtoul(string, &end, base)
+        return unsafe (value, end)
     }
 
     /// Converts a string to an unsigned long long with end pointer and base.
@@ -171,7 +171,7 @@ extension ISO_9899.Stdlib.Conversion {
         base: Int32 = 10
     ) -> (value: UInt64, end: UnsafeMutablePointer<CChar>?) {
         var end: UnsafeMutablePointer<CChar>?
-        let value = iso9899_strtoull(string, &end, base)
-        return (value, end)
+        let value = unsafe iso9899_strtoull(string, &end, base)
+        return unsafe (value, end)
     }
 }

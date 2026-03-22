@@ -39,8 +39,8 @@ extension ISO_9899.Stdlib.Memory {
     public static func allocate(
         count: Int
     ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
-        try ISO_9899.Errno.Require.pointer {
-            iso9899_malloc(count)
+        try unsafe ISO_9899.Errno.Require.pointer {
+            unsafe iso9899_malloc(count)
         }
     }
 
@@ -61,8 +61,8 @@ extension ISO_9899.Stdlib.Memory {
         count: Int,
         size: Int
     ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
-        try ISO_9899.Errno.Require.pointer {
-            iso9899_calloc(count, size)
+        try unsafe ISO_9899.Errno.Require.pointer {
+            unsafe iso9899_calloc(count, size)
         }
     }
 
@@ -85,8 +85,8 @@ extension ISO_9899.Stdlib.Memory {
         _ pointer: UnsafeMutableRawPointer?,
         count: Int
     ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
-        try ISO_9899.Errno.Require.pointer {
-            iso9899_realloc(pointer, count)
+        try unsafe ISO_9899.Errno.Require.pointer {
+            unsafe iso9899_realloc(pointer, count)
         }
     }
 
@@ -107,8 +107,8 @@ extension ISO_9899.Stdlib.Memory {
         alignment: Int,
         size: Int
     ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
-        try ISO_9899.Errno.Require.pointer {
-            iso9899_aligned_alloc(alignment, size)
+        try unsafe ISO_9899.Errno.Require.pointer {
+            unsafe iso9899_aligned_alloc(alignment, size)
         }
     }
 
@@ -122,6 +122,6 @@ extension ISO_9899.Stdlib.Memory {
     /// - Parameter pointer: Pointer to memory to deallocate, or NULL.
     @inline(__always)
     public static func deallocate(_ pointer: UnsafeMutableRawPointer?) {
-        iso9899_free(pointer)
+        unsafe iso9899_free(pointer)
     }
 }

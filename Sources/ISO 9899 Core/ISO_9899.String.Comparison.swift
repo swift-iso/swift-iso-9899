@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.24.4 - Comparison functions
 
-public import CISO9899String
+internal import CISO9899String
 
 extension ISO_9899.String {
     /// String comparison functions from `<string.h>`
@@ -37,7 +37,7 @@ extension ISO_9899.String.Comparison {
         _ lhs: UnsafePointer<ISO_9899.String.Char>,
         _ rhs: UnsafePointer<ISO_9899.String.Char>
     ) -> ISO_9899.String.Order {
-        ISO_9899.String.Order(cResult: iso9899_strcmp(lhs, rhs))
+        unsafe ISO_9899.String.Order(cResult: iso9899_strcmp(lhs, rhs))
     }
 
     /// Compares up to n characters of two null-terminated strings.
@@ -60,6 +60,6 @@ extension ISO_9899.String.Comparison {
         count: Int
     ) -> ISO_9899.String.Order {
         precondition(count >= 0, "count must be non-negative")
-        return ISO_9899.String.Order(cResult: iso9899_strncmp(lhs, rhs, count))
+        return unsafe ISO_9899.String.Order(cResult: iso9899_strncmp(lhs, rhs, count))
     }
 }

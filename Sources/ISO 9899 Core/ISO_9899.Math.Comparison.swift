@@ -5,7 +5,7 @@
 //  Comparison macros (ISO/IEC 9899 Section 7.12.14)
 //
 
-public import CISO9899Math
+internal import CISO9899Math
 
 extension ISO_9899.Math {
     // MARK: - Comparison macros (Section 7.12.14)

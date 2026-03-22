@@ -6,7 +6,7 @@
 //  (ISO/IEC 9899 Sections 7.12.12 and 7.12.13)
 //
 
-public import CISO9899Math
+internal import CISO9899Math
 
 extension ISO_9899.Math {
     // MARK: - Maximum, minimum, and positive difference (Section 7.12.12)

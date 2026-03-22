@@ -444,7 +444,7 @@ extension Double.C {
     /// Delegates to ``ISO_9899/Math/remquo(_:_:_:)-2bdgq``
     @_transparent
     public func remquo(_ y: Double, _ quo: UnsafeMutablePointer<Int32>) -> Double {
-        ISO_9899.Math.remquo(self.value, y, quo)
+        unsafe ISO_9899.Math.remquo(self.value, y, quo)
     }
 }
 
@@ -473,7 +473,7 @@ extension Double.C {
     /// ```
     @_transparent
     public static func nan(_ tag: String = "") -> Double {
-        tag.withCString { ISO_9899.Math.nan($0) }
+        unsafe tag.withCString { unsafe ISO_9899.Math.nan($0) }
     }
 
     /// Returns self with the sign of another value

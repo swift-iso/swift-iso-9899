@@ -27,7 +27,7 @@ extension ISO_9899 {
     /// - `String_Primitives.String`: OS-native path strings (`Char` varies by platform)
     ///
     /// These are different domains with different semantics.
-    public struct String: ~Copyable {
+    @safe public struct String: ~Copyable {
         /// The underlying pointer to the null-terminated byte sequence.
         @usableFromInline
         internal let pointer: UnsafeMutablePointer<Char>
@@ -37,7 +37,7 @@ extension ISO_9899 {
 
         @inlinable
         deinit {
-            pointer.deallocate()
+            unsafe pointer.deallocate()
         }
     }
 }
@@ -58,9 +58,9 @@ extension ISO_9899.String {
     @inlinable
     public init(adopting pointer: UnsafeMutablePointer<ISO_9899.String.Char>, count: Int) {
         #if DEBUG
-        precondition(pointer[count] == ISO_9899.String.terminator, "ISO_9899.String: adopted buffer must be null-terminated")
+        precondition(unsafe (pointer[count] == ISO_9899.String.terminator), "ISO_9899.String: adopted buffer must be null-terminated")
         #endif
-        self.pointer = pointer
+        unsafe (self.pointer = pointer)
         self.count = count
     }
 
@@ -71,8 +71,8 @@ extension ISO_9899.String {
     public init(copying view: borrowing ISO_9899.String.View) {
         let length = view.length
         let buffer = UnsafeMutablePointer<ISO_9899.String.Char>.allocate(capacity: length + 1)
-        _ = iso9899_strcpy(buffer, view.pointer)
-        self.init(adopting: buffer, count: length)
+        _ = unsafe iso9899_strcpy(buffer, view.pointer)
+        unsafe self.init(adopting: buffer, count: length)
     }
 
     /// Creates an owned string by copying from a pointer.
@@ -82,10 +82,10 @@ extension ISO_9899.String {
     /// - Precondition: `pointer` must point to a null-terminated sequence.
     @inlinable
     public init(copying pointer: UnsafePointer<ISO_9899.String.Char>) {
-        let length = ISO_9899.String.length(of: pointer)
+        let length = unsafe ISO_9899.String.length(of: pointer)
         let buffer = UnsafeMutablePointer<ISO_9899.String.Char>.allocate(capacity: length + 1)
-        _ = iso9899_strcpy(buffer, pointer)
-        self.init(adopting: buffer, count: length)
+        _ = unsafe iso9899_strcpy(buffer, pointer)
+        unsafe self.init(adopting: buffer, count: length)
     }
 }
 
@@ -97,7 +97,7 @@ extension ISO_9899.String {
     public borrowing func withUnsafePointer<R: ~Copyable, E: Swift.Error>(
         _ body: (UnsafePointer<ISO_9899.String.Char>) throws(E) -> R
     ) throws(E) -> R {
-        try body(pointer)
+        try unsafe body(pointer)
     }
 
     /// Executes a closure with the underlying mutable pointer.
@@ -105,7 +105,7 @@ extension ISO_9899.String {
     public mutating func withUnsafeMutablePointer<R: ~Copyable, E: Swift.Error>(
         _ body: (UnsafeMutablePointer<ISO_9899.String.Char>) throws(E) -> R
     ) throws(E) -> R {
-        try body(pointer)
+        try unsafe body(pointer)
     }
 
     /// Returns a view of this string.
@@ -131,8 +131,8 @@ extension ISO_9899.String {
     /// - Returns: A tuple of (pointer, count) where count excludes the null terminator.
     @inlinable
     public consuming func take() -> (pointer: UnsafeMutablePointer<ISO_9899.String.Char>, count: Int) {
-        let result = (pointer, count)
+        let result = unsafe (pointer, count)
         discard self
-        return result
+        return unsafe result
     }
 }

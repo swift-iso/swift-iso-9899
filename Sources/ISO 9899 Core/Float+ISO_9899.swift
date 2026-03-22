@@ -444,7 +444,7 @@ extension Float.C {
     /// Delegates to ``ISO_9899/Math/remquo(_:_:_:)-2bdgq``
     @_transparent
     public func remquo(_ y: Float, _ quo: UnsafeMutablePointer<Int32>) -> Float {
-        ISO_9899.Math.remquo(self.value, y, quo)
+        unsafe ISO_9899.Math.remquo(self.value, y, quo)
     }
 }
 
@@ -473,7 +473,7 @@ extension Float.C {
     /// ```
     @_transparent
     public static func nan(_ tag: String = "") -> Float {
-        tag.withCString { ISO_9899.Math.nanf($0) }
+        unsafe tag.withCString { unsafe ISO_9899.Math.nanf($0) }
     }
 
     /// Returns self with the sign of another value

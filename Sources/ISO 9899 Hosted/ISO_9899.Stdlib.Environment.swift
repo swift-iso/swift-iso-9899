@@ -43,6 +43,6 @@ extension ISO_9899.Stdlib.Environment {
     public static func get(
         _ name: UnsafePointer<CChar>
     ) -> UnsafePointer<CChar>? {
-        iso9899_getenv(name).map { UnsafePointer($0) }
+        unsafe iso9899_getenv(name).map { unsafe UnsafePointer($0) }
     }
 }

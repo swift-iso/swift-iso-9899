@@ -5,7 +5,7 @@
 //  Error and gamma functions (ISO/IEC 9899 Section 7.12.8)
 //
 
-public import CISO9899Math
+internal import CISO9899Math
 
 extension ISO_9899.Math {
     // MARK: - Error functions (Section 7.12.8)

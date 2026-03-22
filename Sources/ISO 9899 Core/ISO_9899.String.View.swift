@@ -13,7 +13,7 @@ extension ISO_9899.String {
     /// the scope where it was created — preventing use-after-free bugs.
     ///
     /// Invariant: Points to a null-terminated byte sequence.
-    public struct View: ~Copyable, ~Escapable {
+    @safe public struct View: ~Copyable, ~Escapable {
         /// The underlying pointer to the null-terminated byte sequence.
         public let pointer: UnsafePointer<Char>
     }
@@ -31,9 +31,9 @@ extension ISO_9899.String.View {
     @_lifetime(borrow pointer)
     public init(_ pointer: UnsafePointer<ISO_9899.String.Char>) {
         #if DEBUG
-        Self.debugValidateTermination(pointer)
+        unsafe Self.debugValidateTermination(pointer)
         #endif
-        self.pointer = pointer
+        unsafe (self.pointer = pointer)
     }
 }
 
@@ -47,13 +47,13 @@ extension ISO_9899.String.View {
 
     @usableFromInline
     internal static func debugValidateTermination(_ pointer: UnsafePointer<ISO_9899.String.Char>) {
-        var current = pointer
+        var current = unsafe pointer
         var scanned = 0
         while scanned < maxDebugScanLength {
-            if current.pointee == ISO_9899.String.terminator {
+            if unsafe (current.pointee == ISO_9899.String.terminator) {
                 return // Valid: found terminator
             }
-            current = current.successor()
+            unsafe (current = current.successor())
             scanned += 1
         }
         assertionFailure("ISO_9899.String.View: pointer does not appear to be null-terminated within \(maxDebugScanLength) bytes")
@@ -69,12 +69,12 @@ extension ISO_9899.String.View {
     public borrowing func withUnsafePointer<R: ~Copyable, E: Swift.Error>(
         _ body: (UnsafePointer<ISO_9899.String.Char>) throws(E) -> R
     ) throws(E) -> R {
-        try body(pointer)
+        try unsafe body(pointer)
     }
 
     /// The length in bytes, excluding the null terminator.
     @inlinable
     public var length: Int {
-        ISO_9899.String.length(of: pointer)
+        unsafe ISO_9899.String.length(of: pointer)
     }
 }

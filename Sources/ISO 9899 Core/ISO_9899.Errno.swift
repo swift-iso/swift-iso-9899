@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.5 - Errors <errno.h>
 
-public import CISO9899Errno
+internal import CISO9899Errno
 
 extension ISO_9899 {
     /// Section 7.5: Errors `<errno.h>`
@@ -236,10 +236,10 @@ extension ISO_9899.Errno.Require {
         _ operation: () -> UnsafeMutablePointer<T>?
     ) throws(ISO_9899.Errno.Code) -> UnsafeMutablePointer<T> {
         ISO_9899.Errno.clear()
-        guard let result = operation() else {
+        guard let result = unsafe operation() else {
             throw ISO_9899.Errno.current
         }
-        return result
+        return unsafe result
     }
 
     /// Requires a non-NULL raw pointer result.
@@ -254,10 +254,10 @@ extension ISO_9899.Errno.Require {
         _ operation: () -> UnsafeMutableRawPointer?
     ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
         ISO_9899.Errno.clear()
-        guard let result = operation() else {
+        guard let result = unsafe operation() else {
             throw ISO_9899.Errno.current
         }
-        return result
+        return unsafe result
     }
 
     /// Requires a non-(-1) integer result.

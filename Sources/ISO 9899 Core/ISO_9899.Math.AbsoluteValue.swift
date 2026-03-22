@@ -5,7 +5,7 @@
 //  Additional power and absolute-value functions (ISO/IEC 9899 Section 7.12.7)
 //
 
-public import CISO9899Math
+internal import CISO9899Math
 
 extension ISO_9899.Math {
     // MARK: - Absolute value functions (Section 7.12.7)

@@ -5,7 +5,7 @@
 // ISO/IEC 9899:2018 Section 7.24.3 - Concatenation functions
 // ISO/IEC 9899:2018 Section 7.24.6.3 - The strlen function
 
-public import CISO9899String
+internal import CISO9899String
 
 extension ISO_9899.String {
     /// String copying functions from `<string.h>`
@@ -47,7 +47,7 @@ extension ISO_9899.String.Copy {
         to destination: UnsafeMutablePointer<ISO_9899.String.Char>,
         from source: UnsafePointer<ISO_9899.String.Char>
     ) -> UnsafeMutablePointer<ISO_9899.String.Char> {
-        iso9899_strcpy(destination, source)
+        unsafe iso9899_strcpy(destination, source)
     }
 
     /// Copies up to n characters from a string to a destination buffer.
@@ -79,7 +79,7 @@ extension ISO_9899.String.Copy {
         count: Int
     ) -> UnsafeMutablePointer<ISO_9899.String.Char> {
         precondition(count >= 0, "count must be non-negative")
-        return iso9899_strncpy(destination, source, count)
+        return unsafe iso9899_strncpy(destination, source, count)
     }
 }
 
@@ -127,7 +127,7 @@ extension ISO_9899.String.Concatenation {
         to destination: UnsafeMutablePointer<ISO_9899.String.Char>,
         from source: UnsafePointer<ISO_9899.String.Char>
     ) -> UnsafeMutablePointer<ISO_9899.String.Char> {
-        iso9899_strcat(destination, source)
+        unsafe iso9899_strcat(destination, source)
     }
 
     /// Appends up to n characters from a string to another string.
@@ -155,7 +155,7 @@ extension ISO_9899.String.Concatenation {
         count: Int
     ) -> UnsafeMutablePointer<ISO_9899.String.Char> {
         precondition(count >= 0, "count must be non-negative")
-        return iso9899_strncat(destination, source, count)
+        return unsafe iso9899_strncat(destination, source, count)
     }
 }
 
@@ -182,6 +182,6 @@ extension ISO_9899.String.Length {
     ///   implementation, use `ISO_9899.String.length(of:)` directly.
     @inline(__always)
     public static func strlen(_ string: UnsafePointer<ISO_9899.String.Char>) -> Int {
-        iso9899_strlen(string)
+        unsafe iso9899_strlen(string)
     }
 }

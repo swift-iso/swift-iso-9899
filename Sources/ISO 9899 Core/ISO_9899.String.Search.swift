@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.24.5 - Search functions
 
-public import CISO9899String
+internal import CISO9899String
 
 extension ISO_9899.String {
     /// String search functions from `<string.h>`
@@ -39,7 +39,7 @@ extension ISO_9899.String.Search {
         in string: UnsafePointer<ISO_9899.String.Char>,
         byte: ISO_9899.String.Char
     ) -> UnsafePointer<ISO_9899.String.Char>? {
-        iso9899_strchr_const(string, Int32(byte))
+        unsafe iso9899_strchr_const(string, Int32(byte))
     }
 
     /// Locates first occurrence of a byte in a string (mutable).
@@ -55,7 +55,7 @@ extension ISO_9899.String.Search {
         in string: UnsafeMutablePointer<ISO_9899.String.Char>,
         byte: ISO_9899.String.Char
     ) -> UnsafeMutablePointer<ISO_9899.String.Char>? {
-        iso9899_strchr(string, Int32(byte))
+        unsafe iso9899_strchr(string, Int32(byte))
     }
 }
 
@@ -78,7 +78,7 @@ extension ISO_9899.String.Search {
         in string: UnsafePointer<ISO_9899.String.Char>,
         byte: ISO_9899.String.Char
     ) -> UnsafePointer<ISO_9899.String.Char>? {
-        iso9899_strrchr_const(string, Int32(byte))
+        unsafe iso9899_strrchr_const(string, Int32(byte))
     }
 
     /// Locates last occurrence of a byte in a string (mutable).
@@ -94,7 +94,7 @@ extension ISO_9899.String.Search {
         in string: UnsafeMutablePointer<ISO_9899.String.Char>,
         byte: ISO_9899.String.Char
     ) -> UnsafeMutablePointer<ISO_9899.String.Char>? {
-        iso9899_strrchr(string, Int32(byte))
+        unsafe iso9899_strrchr(string, Int32(byte))
     }
 }
 
@@ -118,7 +118,7 @@ extension ISO_9899.String.Search {
         in haystack: UnsafePointer<ISO_9899.String.Char>,
         find needle: UnsafePointer<ISO_9899.String.Char>
     ) -> UnsafePointer<ISO_9899.String.Char>? {
-        iso9899_strstr_const(haystack, needle)
+        unsafe iso9899_strstr_const(haystack, needle)
     }
 
     /// Locates a substring within a string (mutable).
@@ -134,7 +134,7 @@ extension ISO_9899.String.Search {
         in haystack: UnsafeMutablePointer<ISO_9899.String.Char>,
         find needle: UnsafePointer<ISO_9899.String.Char>
     ) -> UnsafeMutablePointer<ISO_9899.String.Char>? {
-        iso9899_strstr(haystack, needle)
+        unsafe iso9899_strstr(haystack, needle)
     }
 }
 
@@ -157,7 +157,7 @@ extension ISO_9899.String.Search {
         in string: UnsafePointer<ISO_9899.String.Char>,
         from accept: UnsafePointer<ISO_9899.String.Char>
     ) -> UnsafePointer<ISO_9899.String.Char>? {
-        iso9899_strpbrk_const(string, accept)
+        unsafe iso9899_strpbrk_const(string, accept)
     }
 
     /// Locates first occurrence of any byte from a set (mutable).
@@ -173,7 +173,7 @@ extension ISO_9899.String.Search {
         in string: UnsafeMutablePointer<ISO_9899.String.Char>,
         from accept: UnsafePointer<ISO_9899.String.Char>
     ) -> UnsafeMutablePointer<ISO_9899.String.Char>? {
-        iso9899_strpbrk(string, accept)
+        unsafe iso9899_strpbrk(string, accept)
     }
 }
 
@@ -197,7 +197,7 @@ extension ISO_9899.String.Search {
         in string: UnsafePointer<ISO_9899.String.Char>,
         accept: UnsafePointer<ISO_9899.String.Char>
     ) -> Int {
-        iso9899_strspn(string, accept)
+        unsafe iso9899_strspn(string, accept)
     }
 
     /// Computes length of initial segment of bytes not in a set.
@@ -217,6 +217,6 @@ extension ISO_9899.String.Search {
         in string: UnsafePointer<ISO_9899.String.Char>,
         reject: UnsafePointer<ISO_9899.String.Char>
     ) -> Int {
-        iso9899_strcspn(string, reject)
+        unsafe iso9899_strcspn(string, reject)
     }
 }

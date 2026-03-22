@@ -5,7 +5,7 @@
 //  Remainder functions (ISO/IEC 9899 Section 7.12.10)
 //
 
-public import CISO9899Math
+internal import CISO9899Math
 
 extension ISO_9899.Math {
     // MARK: - Remainder functions (Section 7.12.10)
@@ -95,7 +95,7 @@ extension ISO_9899.Math {
     /// - Returns: The remainder, with quotient stored in quo
     @inline(__always)
     public static func remquo(_ x: Double, _ y: Double, _ quo: UnsafeMutablePointer<Int32>) -> Double {
-        return iso9899_remquo(x, y, quo)
+        return unsafe iso9899_remquo(x, y, quo)
     }
 
     /// Compute remainder and quotient (Float variant)
@@ -109,6 +109,6 @@ extension ISO_9899.Math {
     /// - Returns: The remainder, with quotient stored in quo
     @inline(__always)
     public static func remquo(_ x: Float, _ y: Float, _ quo: UnsafeMutablePointer<Int32>) -> Float {
-        return iso9899_remquof(x, y, quo)
+        return unsafe iso9899_remquof(x, y, quo)
     }
 }

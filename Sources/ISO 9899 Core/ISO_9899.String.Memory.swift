@@ -3,7 +3,7 @@
 //
 // Memory functions (ISO/IEC 9899:2018 Section 7.24.2, 7.24.4, 7.24.5, 7.24.6)
 
-public import CISO9899String
+internal import CISO9899String
 
 extension ISO_9899.String {
     /// Memory operations from `<string.h>`
@@ -73,7 +73,7 @@ extension ISO_9899.String.Memory {
         from source: UnsafeRawPointer,
         count: Int
     ) {
-        _ = iso9899_memcpy(destination, source, count)
+        _ = unsafe iso9899_memcpy(destination, source, count)
     }
 
     /// Copies bytes from source to destination (overlapping safe).
@@ -108,7 +108,7 @@ extension ISO_9899.String.Memory {
         from source: UnsafeRawPointer,
         count: Int
     ) {
-        _ = iso9899_memmove(destination, source, count)
+        _ = unsafe iso9899_memmove(destination, source, count)
     }
 }
 
@@ -152,7 +152,7 @@ extension ISO_9899.String.Memory {
         _ rhs: UnsafeRawPointer,
         count: Int
     ) -> Int {
-        Int(iso9899_memcmp(lhs, rhs, count))
+        unsafe Int(iso9899_memcmp(lhs, rhs, count))
     }
 }
 
@@ -192,7 +192,7 @@ extension ISO_9899.String.Memory {
         byte: UInt8,
         count: Int
     ) -> UnsafeRawPointer? {
-        iso9899_memchr_const(buffer, Int32(byte), count)
+        unsafe iso9899_memchr_const(buffer, Int32(byte), count)
     }
 
     /// Searches for a byte value in a memory region (mutable).
@@ -211,7 +211,7 @@ extension ISO_9899.String.Memory {
         byte: UInt8,
         count: Int
     ) -> UnsafeMutableRawPointer? {
-        iso9899_memchr(buffer, Int32(byte), count)
+        unsafe iso9899_memchr(buffer, Int32(byte), count)
     }
 }
 
@@ -249,6 +249,6 @@ extension ISO_9899.String.Memory {
         with byte: UInt8,
         count: Int
     ) {
-        _ = iso9899_memset(destination, Int32(byte), count)
+        _ = unsafe iso9899_memset(destination, Int32(byte), count)
     }
 }

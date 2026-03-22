@@ -5,7 +5,7 @@
 //  Manipulation functions (ISO/IEC 9899 Section 7.12.11)
 //
 
-public import CISO9899Math
+internal import CISO9899Math
 
 extension ISO_9899.Math {
     // MARK: - Manipulation functions (Section 7.12.11)
@@ -58,7 +58,7 @@ extension ISO_9899.Math {
     /// - Returns: A quiet NaN value
     @inline(__always)
     public static func nan(_ tag: UnsafePointer<CChar>) -> Double {
-        return iso9899_nan(tag)
+        return unsafe iso9899_nan(tag)
     }
 
     /// Create a quiet NaN with optional payload (Float variant)
@@ -69,7 +69,7 @@ extension ISO_9899.Math {
     /// - Returns: A quiet NaN value
     @inline(__always)
     public static func nanf(_ tag: UnsafePointer<CChar>) -> Float {
-        return iso9899_nanf(tag)
+        return unsafe iso9899_nanf(tag)
     }
 
     /// Get next representable floating-point value
