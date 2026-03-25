@@ -39,7 +39,7 @@ extension ISO_9899.Stdlib.Environment {
     /// - Warning: The returned pointer points to memory that may be
     ///   modified by subsequent calls to `getenv`, `setenv`, or `unsetenv`.
     ///   Copy the value if you need to preserve it.
-    @inline(__always)
+    @inline(always)
     public static func get(
         _ name: UnsafePointer<CChar>
     ) -> UnsafePointer<CChar>? {

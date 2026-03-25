@@ -67,7 +67,7 @@ extension ISO_9899.String.Memory {
     ///     }
     /// }
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func copy(
         to destination: UnsafeMutableRawPointer,
         from source: UnsafeRawPointer,
@@ -102,7 +102,7 @@ extension ISO_9899.String.Memory {
     ///     )
     /// }
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func move(
         to destination: UnsafeMutableRawPointer,
         from source: UnsafeRawPointer,
@@ -146,7 +146,7 @@ extension ISO_9899.String.Memory {
     /// }
     /// // result < 0 because a[3] (4) < b[3] (5)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func compare(
         _ lhs: UnsafeRawPointer,
         _ rhs: UnsafeRawPointer,
@@ -186,7 +186,7 @@ extension ISO_9899.String.Memory {
     /// }
     /// // found points to data[2]
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func find(
         in buffer: UnsafeRawPointer,
         byte: UInt8,
@@ -205,7 +205,7 @@ extension ISO_9899.String.Memory {
     ///   - count: Number of bytes to search.
     ///
     /// - Returns: A mutable pointer to the located byte, or `nil` if not found.
-    @inline(__always)
+    @inline(always)
     public static func find(
         in buffer: UnsafeMutableRawPointer,
         byte: UInt8,
@@ -243,7 +243,7 @@ extension ISO_9899.String.Memory {
     /// }
     /// // buffer is now all zeros
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func fill(
         _ destination: UnsafeMutableRawPointer,
         with byte: UInt8,

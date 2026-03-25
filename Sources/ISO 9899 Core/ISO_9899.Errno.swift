@@ -41,19 +41,19 @@ extension ISO_9899 {
 
 extension ISO_9899.Errno {
     /// The current thread-local errno value.
-    @inline(__always)
+    @inline(always)
     public static var current: Code {
         Code(rawValue: iso9899_get_errno())
     }
 
     /// Sets the thread-local errno value.
-    @inline(__always)
+    @inline(always)
     public static func set(_ code: Code) {
         iso9899_set_errno(code.rawValue)
     }
 
     /// Clears errno (sets to zero).
-    @inline(__always)
+    @inline(always)
     public static func clear() {
         iso9899_set_errno(0)
     }
@@ -65,7 +65,7 @@ extension ISO_9899.Errno {
     ///
     /// - Parameter operation: The operation to execute.
     /// - Returns: A tuple of (result, errno code).
-    @inline(__always)
+    @inline(always)
     public static func capture<T>(_ operation: () -> T) -> (result: T, error: Code) {
         clear()
         let result = operation()
@@ -83,7 +83,7 @@ extension ISO_9899.Errno {
     public struct Code: RawRepresentable, Equatable, Hashable, Sendable, Swift.Error {
         public let rawValue: Int32
 
-        @inline(__always)
+        @inline(always)
         public init(rawValue: Int32) {
             self.rawValue = rawValue
         }
@@ -231,7 +231,7 @@ extension ISO_9899.Errno.Require {
     /// - Parameter operation: The operation that returns an optional pointer.
     /// - Returns: The non-NULL pointer.
     /// - Throws: `ISO_9899.Errno.Code` if the pointer is NULL.
-    @inline(__always)
+    @inline(always)
     public static func pointer<T>(
         _ operation: () -> UnsafeMutablePointer<T>?
     ) throws(ISO_9899.Errno.Code) -> UnsafeMutablePointer<T> {
@@ -249,7 +249,7 @@ extension ISO_9899.Errno.Require {
     /// - Parameter operation: The operation that returns an optional raw pointer.
     /// - Returns: The non-NULL raw pointer.
     /// - Throws: `ISO_9899.Errno.Code` if the pointer is NULL.
-    @inline(__always)
+    @inline(always)
     public static func pointer(
         _ operation: () -> UnsafeMutableRawPointer?
     ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
@@ -267,7 +267,7 @@ extension ISO_9899.Errno.Require {
     /// - Parameter operation: The operation that returns an Int32.
     /// - Returns: The result (guaranteed not -1).
     /// - Throws: `ISO_9899.Errno.Code` if the result is -1.
-    @inline(__always)
+    @inline(always)
     public static func int(
         _ operation: () -> Int32
     ) throws(ISO_9899.Errno.Code) -> Int32 {
@@ -286,7 +286,7 @@ extension ISO_9899.Errno.Require {
     /// - Parameter operation: The operation that returns an Int32.
     /// - Returns: The non-zero result.
     /// - Throws: `ISO_9899.Errno.Code` if the result is 0.
-    @inline(__always)
+    @inline(always)
     public static func nonZero(
         _ operation: () -> Int32
     ) throws(ISO_9899.Errno.Code) -> Int32 {

@@ -32,7 +32,7 @@ extension ISO_9899.String.Comparison {
     ///   - lhs: Pointer to first null-terminated string.
     ///   - rhs: Pointer to second null-terminated string.
     /// - Returns: Ordering relationship between the strings.
-    @inline(__always)
+    @inline(always)
     public static func compare(
         _ lhs: UnsafePointer<ISO_9899.String.Char>,
         _ rhs: UnsafePointer<ISO_9899.String.Char>
@@ -53,7 +53,7 @@ extension ISO_9899.String.Comparison {
     ///   - count: Maximum number of characters to compare.
     /// - Returns: Ordering relationship between the strings.
     /// - Precondition: `count >= 0`
-    @inline(__always)
+    @inline(always)
     public static func compare(
         _ lhs: UnsafePointer<ISO_9899.String.Char>,
         _ rhs: UnsafePointer<ISO_9899.String.Char>,

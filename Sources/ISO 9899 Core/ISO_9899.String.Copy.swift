@@ -41,7 +41,7 @@ extension ISO_9899.String.Copy {
     ///
     /// - Precondition: `destination` must have enough space for the source string.
     /// - Precondition: Source and destination must not overlap.
-    @inline(__always)
+    @inline(always)
     @discardableResult
     public static func copy(
         to destination: UnsafeMutablePointer<ISO_9899.String.Char>,
@@ -71,7 +71,7 @@ extension ISO_9899.String.Copy {
     ///
     /// - Warning: If `source` is longer than `count`, the result will NOT
     ///   be null-terminated.
-    @inline(__always)
+    @inline(always)
     @discardableResult
     public static func copy(
         to destination: UnsafeMutablePointer<ISO_9899.String.Char>,
@@ -121,7 +121,7 @@ extension ISO_9899.String.Concatenation {
     ///
     /// - Precondition: `destination` must have enough space for the concatenated result.
     /// - Precondition: Source and destination must not overlap.
-    @inline(__always)
+    @inline(always)
     @discardableResult
     public static func append(
         to destination: UnsafeMutablePointer<ISO_9899.String.Char>,
@@ -147,7 +147,7 @@ extension ISO_9899.String.Concatenation {
     /// - Precondition: `count >= 0`
     /// - Precondition: `destination` must have enough space for the result.
     /// - Precondition: Source and destination must not overlap.
-    @inline(__always)
+    @inline(always)
     @discardableResult
     public static func append(
         to destination: UnsafeMutablePointer<ISO_9899.String.Char>,
@@ -180,7 +180,7 @@ extension ISO_9899.String.Length {
     ///
     /// - Note: This uses the C library's `strlen`. For a pure Swift
     ///   implementation, use `ISO_9899.String.length(of:)` directly.
-    @inline(__always)
+    @inline(always)
     public static func strlen(_ string: UnsafePointer<ISO_9899.String.Char>) -> Int {
         unsafe iso9899_strlen(string)
     }

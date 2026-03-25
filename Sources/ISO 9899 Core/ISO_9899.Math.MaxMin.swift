@@ -31,7 +31,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.fdim(5.0, 3.0)   // 2.0
     /// let result2 = ISO_9899.Math.fdim(3.0, 5.0)  // 0.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func fdim(_ x: Double, _ y: Double) -> Double {
         return iso9899_fdim(x, y)
     }
@@ -44,7 +44,7 @@ extension ISO_9899.Math {
     ///   - x: First value
     ///   - y: Second value
     /// - Returns: The positive difference between x and y
-    @inline(__always)
+    @inline(always)
     public static func fdim(_ x: Float, _ y: Float) -> Float {
         return iso9899_fdimf(x, y)
     }
@@ -66,7 +66,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.fmax(5.0, 3.0)   // 5.0
     /// let result2 = ISO_9899.Math.fmax(3.0, 5.0)  // 5.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func fmax(_ x: Double, _ y: Double) -> Double {
         return iso9899_fmax(x, y)
     }
@@ -79,7 +79,7 @@ extension ISO_9899.Math {
     ///   - x: First value
     ///   - y: Second value
     /// - Returns: The maximum of x and y
-    @inline(__always)
+    @inline(always)
     public static func fmax(_ x: Float, _ y: Float) -> Float {
         return iso9899_fmaxf(x, y)
     }
@@ -101,7 +101,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.fmin(5.0, 3.0)   // 3.0
     /// let result2 = ISO_9899.Math.fmin(3.0, 5.0)  // 3.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func fmin(_ x: Double, _ y: Double) -> Double {
         return iso9899_fmin(x, y)
     }
@@ -114,7 +114,7 @@ extension ISO_9899.Math {
     ///   - x: First value
     ///   - y: Second value
     /// - Returns: The minimum of x and y
-    @inline(__always)
+    @inline(always)
     public static func fmin(_ x: Float, _ y: Float) -> Float {
         return iso9899_fminf(x, y)
     }
@@ -141,7 +141,7 @@ extension ISO_9899.Math {
     /// ```swift
     /// let result = ISO_9899.Math.fma(2.0, 3.0, 4.0)  // 10.0 (more accurate than 2*3+4)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func fma(_ x: Double, _ y: Double, _ z: Double) -> Double {
         return iso9899_fma(x, y, z)
     }
@@ -155,7 +155,7 @@ extension ISO_9899.Math {
     ///   - y: Second multiplicand
     ///   - z: Addend
     /// - Returns: The value of (x × y) + z, computed with only one rounding
-    @inline(__always)
+    @inline(always)
     public static func fma(_ x: Float, _ y: Float, _ z: Float) -> Float {
         return iso9899_fmaf(x, y, z)
     }

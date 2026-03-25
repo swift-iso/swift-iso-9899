@@ -30,7 +30,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.isgreater(3.0, 5.0)      // false
     /// ISO_9899.Math.isgreater(.nan, 5.0)     // false (no exception)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func isgreater(_ x: Double, _ y: Double) -> Bool {
         return iso9899_isgreater_d(x, y) != 0
     }
@@ -43,7 +43,7 @@ extension ISO_9899.Math {
     ///   - x: First value
     ///   - y: Second value
     /// - Returns: True if x > y (and neither is NaN)
-    @inline(__always)
+    @inline(always)
     public static func isgreater(_ x: Float, _ y: Float) -> Bool {
         return iso9899_isgreater_f(x, y) != 0
     }
@@ -68,7 +68,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.isgreaterequal(5.0, 3.0) // true
     /// ISO_9899.Math.isgreaterequal(3.0, 5.0) // false
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func isgreaterequal(_ x: Double, _ y: Double) -> Bool {
         return iso9899_isgreaterequal_d(x, y) != 0
     }
@@ -81,7 +81,7 @@ extension ISO_9899.Math {
     ///   - x: First value
     ///   - y: Second value
     /// - Returns: True if x >= y (and neither is NaN)
-    @inline(__always)
+    @inline(always)
     public static func isgreaterequal(_ x: Float, _ y: Float) -> Bool {
         return iso9899_isgreaterequal_f(x, y) != 0
     }
@@ -106,7 +106,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.isless(5.0, 3.0)         // false
     /// ISO_9899.Math.isless(.nan, 5.0)        // false (no exception)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func isless(_ x: Double, _ y: Double) -> Bool {
         return iso9899_isless_d(x, y) != 0
     }
@@ -119,7 +119,7 @@ extension ISO_9899.Math {
     ///   - x: First value
     ///   - y: Second value
     /// - Returns: True if x < y (and neither is NaN)
-    @inline(__always)
+    @inline(always)
     public static func isless(_ x: Float, _ y: Float) -> Bool {
         return iso9899_isless_f(x, y) != 0
     }
@@ -144,7 +144,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.islessequal(3.0, 5.0)    // true
     /// ISO_9899.Math.islessequal(5.0, 3.0)    // false
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func islessequal(_ x: Double, _ y: Double) -> Bool {
         return iso9899_islessequal_d(x, y) != 0
     }
@@ -157,7 +157,7 @@ extension ISO_9899.Math {
     ///   - x: First value
     ///   - y: Second value
     /// - Returns: True if x <= y (and neither is NaN)
-    @inline(__always)
+    @inline(always)
     public static func islessequal(_ x: Float, _ y: Float) -> Bool {
         return iso9899_islessequal_f(x, y) != 0
     }
@@ -184,7 +184,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.islessgreater(3.0, 3.0)  // false (equal)
     /// ISO_9899.Math.islessgreater(.nan, 5.0) // false (unordered)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func islessgreater(_ x: Double, _ y: Double) -> Bool {
         return iso9899_islessgreater_d(x, y) != 0
     }
@@ -197,7 +197,7 @@ extension ISO_9899.Math {
     ///   - x: First value
     ///   - y: Second value
     /// - Returns: True if x < y or x > y (and neither is NaN)
-    @inline(__always)
+    @inline(always)
     public static func islessgreater(_ x: Float, _ y: Float) -> Bool {
         return iso9899_islessgreater_f(x, y) != 0
     }
@@ -219,7 +219,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.isunordered(3.0, .nan)   // true
     /// ISO_9899.Math.isunordered(3.0, 5.0)    // false
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func isunordered(_ x: Double, _ y: Double) -> Bool {
         return iso9899_isunordered_d(x, y) != 0
     }
@@ -232,7 +232,7 @@ extension ISO_9899.Math {
     ///   - x: First value
     ///   - y: Second value
     /// - Returns: True if x or y is NaN
-    @inline(__always)
+    @inline(always)
     public static func isunordered(_ x: Float, _ y: Float) -> Bool {
         return iso9899_isunordered_f(x, y) != 0
     }

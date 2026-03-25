@@ -20,7 +20,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a floating-point number
-    @inline(__always)
+    @inline(always)
     public static func rint(_ x: Double) -> Double {
         return iso9899_rint(x)
     }
@@ -31,7 +31,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a floating-point number
-    @inline(__always)
+    @inline(always)
     public static func rint(_ x: Float) -> Float {
         return iso9899_rintf(x)
     }
@@ -46,7 +46,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a floating-point number
-    @inline(__always)
+    @inline(always)
     public static func nearbyint(_ x: Double) -> Double {
         return iso9899_nearbyint(x)
     }
@@ -57,7 +57,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a floating-point number
-    @inline(__always)
+    @inline(always)
     public static func nearbyint(_ x: Float) -> Float {
         return iso9899_nearbyintf(x)
     }
@@ -75,7 +75,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a long integer
-    @inline(__always)
+    @inline(always)
     public static func lrint(_ x: Double) -> Int {
         return Int(iso9899_lrint(x))
     }
@@ -86,7 +86,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a long integer
-    @inline(__always)
+    @inline(always)
     public static func lrint(_ x: Float) -> Int {
         return Int(iso9899_lrintf(x))
     }
@@ -97,7 +97,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a long long integer
-    @inline(__always)
+    @inline(always)
     public static func llrint(_ x: Double) -> Int64 {
         return iso9899_llrint(x)
     }
@@ -108,7 +108,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a long long integer
-    @inline(__always)
+    @inline(always)
     public static func llrint(_ x: Float) -> Int64 {
         return iso9899_llrintf(x)
     }
@@ -122,7 +122,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a long integer
-    @inline(__always)
+    @inline(always)
     public static func lround(_ x: Double) -> Int {
         return Int(iso9899_lround(x))
     }
@@ -133,7 +133,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a long integer
-    @inline(__always)
+    @inline(always)
     public static func lround(_ x: Float) -> Int {
         return Int(iso9899_lroundf(x))
     }
@@ -144,7 +144,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a long long integer
-    @inline(__always)
+    @inline(always)
     public static func llround(_ x: Double) -> Int64 {
         return iso9899_llround(x)
     }
@@ -155,7 +155,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value to round
     /// - Returns: The rounded value as a long long integer
-    @inline(__always)
+    @inline(always)
     public static func llround(_ x: Float) -> Int64 {
         return iso9899_llroundf(x)
     }

@@ -43,7 +43,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is alphanumeric.
-    @inline(__always)
+    @inline(always)
     public static func isAlphanumeric(_ c: Int32) -> Bool {
         iso9899_isalnum(c) != 0
     }
@@ -54,7 +54,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is alphabetic.
-    @inline(__always)
+    @inline(always)
     public static func isAlpha(_ c: Int32) -> Bool {
         iso9899_isalpha(c) != 0
     }
@@ -65,7 +65,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is a blank character.
-    @inline(__always)
+    @inline(always)
     public static func isBlank(_ c: Int32) -> Bool {
         iso9899_isblank(c) != 0
     }
@@ -76,7 +76,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is a control character.
-    @inline(__always)
+    @inline(always)
     public static func isControl(_ c: Int32) -> Bool {
         iso9899_iscntrl(c) != 0
     }
@@ -87,7 +87,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is a digit (0-9).
-    @inline(__always)
+    @inline(always)
     public static func isDigit(_ c: Int32) -> Bool {
         iso9899_isdigit(c) != 0
     }
@@ -98,7 +98,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is a graphical character (not space).
-    @inline(__always)
+    @inline(always)
     public static func isGraph(_ c: Int32) -> Bool {
         iso9899_isgraph(c) != 0
     }
@@ -109,7 +109,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is lowercase.
-    @inline(__always)
+    @inline(always)
     public static func isLower(_ c: Int32) -> Bool {
         iso9899_islower(c) != 0
     }
@@ -120,7 +120,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is printable (including space).
-    @inline(__always)
+    @inline(always)
     public static func isPrint(_ c: Int32) -> Bool {
         iso9899_isprint(c) != 0
     }
@@ -131,7 +131,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is punctuation.
-    @inline(__always)
+    @inline(always)
     public static func isPunctuation(_ c: Int32) -> Bool {
         iso9899_ispunct(c) != 0
     }
@@ -142,7 +142,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is whitespace.
-    @inline(__always)
+    @inline(always)
     public static func isSpace(_ c: Int32) -> Bool {
         iso9899_isspace(c) != 0
     }
@@ -153,7 +153,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is uppercase.
-    @inline(__always)
+    @inline(always)
     public static func isUpper(_ c: Int32) -> Bool {
         iso9899_isupper(c) != 0
     }
@@ -164,7 +164,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to test.
     /// - Returns: `true` if `c` is a hex digit (0-9, A-F, a-f).
-    @inline(__always)
+    @inline(always)
     public static func isHexDigit(_ c: Int32) -> Bool {
         iso9899_isxdigit(c) != 0
     }
@@ -179,7 +179,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to convert.
     /// - Returns: Lowercase equivalent if `c` is uppercase, otherwise `c`.
-    @inline(__always)
+    @inline(always)
     public static func toLower(_ c: Int32) -> Int32 {
         iso9899_tolower(c)
     }
@@ -190,7 +190,7 @@ extension ISO_9899.Ctype {
     ///
     /// - Parameter c: Character to convert.
     /// - Returns: Uppercase equivalent if `c` is lowercase, otherwise `c`.
-    @inline(__always)
+    @inline(always)
     public static func toUpper(_ c: Int32) -> Int32 {
         iso9899_toupper(c)
     }

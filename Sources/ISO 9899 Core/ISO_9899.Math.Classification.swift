@@ -46,7 +46,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.fpclassify(.infinity)  // .infinite
     /// ISO_9899.Math.fpclassify(.nan)       // .nan
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func fpclassify(_ x: Double) -> FloatingPointClass {
         _ = iso9899_fpclassify_d(x)
         // Map C macro values to our enum
@@ -70,7 +70,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: Value to classify
     /// - Returns: Classification of the value
-    @inline(__always)
+    @inline(always)
     public static func fpclassify(_ x: Float) -> FloatingPointClass {
         _ = iso9899_fpclassify_f(x)
         // Map C macro values to our enum
@@ -103,7 +103,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.isfinite(.infinity)  // false
     /// ISO_9899.Math.isfinite(.nan)       // false
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func isfinite(_ x: Double) -> Bool {
         return iso9899_isfinite_d(x) != 0
     }
@@ -114,7 +114,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: Value to test
     /// - Returns: True if x is finite (not infinite or NaN)
-    @inline(__always)
+    @inline(always)
     public static func isfinite(_ x: Float) -> Bool {
         return iso9899_isfinite_f(x) != 0
     }
@@ -135,7 +135,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.isinf(-.infinity)  // true
     /// ISO_9899.Math.isinf(1.0)         // false
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func isinf(_ x: Double) -> Bool {
         return iso9899_isinf_d(x) != 0
     }
@@ -146,7 +146,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: Value to test
     /// - Returns: True if x is positive or negative infinity
-    @inline(__always)
+    @inline(always)
     public static func isinf(_ x: Float) -> Bool {
         return iso9899_isinf_f(x) != 0
     }
@@ -166,7 +166,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.isnan(0.0 / 0.0) // true
     /// ISO_9899.Math.isnan(1.0)       // false
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func isnan(_ x: Double) -> Bool {
         return iso9899_isnan_d(x) != 0
     }
@@ -177,7 +177,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: Value to test
     /// - Returns: True if x is NaN
-    @inline(__always)
+    @inline(always)
     public static func isnan(_ x: Float) -> Bool {
         return iso9899_isnan_f(x) != 0
     }
@@ -198,7 +198,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.isnormal(0.0)    // false
     /// ISO_9899.Math.isnormal(.nan)   // false
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func isnormal(_ x: Double) -> Bool {
         return iso9899_isnormal_d(x) != 0
     }
@@ -209,7 +209,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: Value to test
     /// - Returns: True if x is a normal value
-    @inline(__always)
+    @inline(always)
     public static func isnormal(_ x: Float) -> Bool {
         return iso9899_isnormal_f(x) != 0
     }
@@ -230,7 +230,7 @@ extension ISO_9899.Math {
     /// ISO_9899.Math.signbit(-0.0)   // true
     /// ISO_9899.Math.signbit(0.0)    // false
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func signbit(_ x: Double) -> Bool {
         return iso9899_signbit_d(x) != 0
     }
@@ -241,7 +241,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: Value to test
     /// - Returns: True if the sign bit is set (negative)
-    @inline(__always)
+    @inline(always)
     public static func signbit(_ x: Float) -> Bool {
         return iso9899_signbit_f(x) != 0
     }

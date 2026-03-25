@@ -31,7 +31,7 @@ extension ISO_9899.Stdlib.Conversion {
     ///
     /// - Parameter string: Pointer to null-terminated string.
     /// - Returns: The converted value.
-    @inline(__always)
+    @inline(always)
     public static func toDouble(_ string: UnsafePointer<CChar>) -> Double {
         unsafe iso9899_atof(string)
     }
@@ -42,7 +42,7 @@ extension ISO_9899.Stdlib.Conversion {
     ///
     /// - Parameter string: Pointer to null-terminated string.
     /// - Returns: The converted value.
-    @inline(__always)
+    @inline(always)
     public static func toInt(_ string: UnsafePointer<CChar>) -> Int32 {
         unsafe iso9899_atoi(string)
     }
@@ -53,7 +53,7 @@ extension ISO_9899.Stdlib.Conversion {
     ///
     /// - Parameter string: Pointer to null-terminated string.
     /// - Returns: The converted value.
-    @inline(__always)
+    @inline(always)
     public static func toLong(_ string: UnsafePointer<CChar>) -> Int {
         unsafe iso9899_atol(string)
     }
@@ -64,7 +64,7 @@ extension ISO_9899.Stdlib.Conversion {
     ///
     /// - Parameter string: Pointer to null-terminated string.
     /// - Returns: The converted value.
-    @inline(__always)
+    @inline(always)
     public static func toLongLong(_ string: UnsafePointer<CChar>) -> Int64 {
         unsafe iso9899_atoll(string)
     }
@@ -79,7 +79,7 @@ extension ISO_9899.Stdlib.Conversion {
     ///
     /// - Parameter string: Pointer to null-terminated string.
     /// - Returns: Tuple of (converted value, pointer to first unconverted character).
-    @inline(__always)
+    @inline(always)
     public static func parseDouble(
         _ string: UnsafePointer<CChar>
     ) -> (value: Double, end: UnsafeMutablePointer<CChar>?) {
@@ -94,7 +94,7 @@ extension ISO_9899.Stdlib.Conversion {
     ///
     /// - Parameter string: Pointer to null-terminated string.
     /// - Returns: Tuple of (converted value, pointer to first unconverted character).
-    @inline(__always)
+    @inline(always)
     public static func parseFloat(
         _ string: UnsafePointer<CChar>
     ) -> (value: Float, end: UnsafeMutablePointer<CChar>?) {
@@ -111,7 +111,7 @@ extension ISO_9899.Stdlib.Conversion {
     ///   - string: Pointer to null-terminated string.
     ///   - base: Number base (0, or 2-36). 0 means auto-detect.
     /// - Returns: Tuple of (converted value, pointer to first unconverted character).
-    @inline(__always)
+    @inline(always)
     public static func parseLong(
         _ string: UnsafePointer<CChar>,
         base: Int32 = 10
@@ -129,7 +129,7 @@ extension ISO_9899.Stdlib.Conversion {
     ///   - string: Pointer to null-terminated string.
     ///   - base: Number base (0, or 2-36). 0 means auto-detect.
     /// - Returns: Tuple of (converted value, pointer to first unconverted character).
-    @inline(__always)
+    @inline(always)
     public static func parseLongLong(
         _ string: UnsafePointer<CChar>,
         base: Int32 = 10
@@ -147,7 +147,7 @@ extension ISO_9899.Stdlib.Conversion {
     ///   - string: Pointer to null-terminated string.
     ///   - base: Number base (0, or 2-36). 0 means auto-detect.
     /// - Returns: Tuple of (converted value, pointer to first unconverted character).
-    @inline(__always)
+    @inline(always)
     public static func parseUnsignedLong(
         _ string: UnsafePointer<CChar>,
         base: Int32 = 10
@@ -165,7 +165,7 @@ extension ISO_9899.Stdlib.Conversion {
     ///   - string: Pointer to null-terminated string.
     ///   - base: Number base (0, or 2-36). 0 means auto-detect.
     /// - Returns: Tuple of (converted value, pointer to first unconverted character).
-    @inline(__always)
+    @inline(always)
     public static func parseUnsignedLongLong(
         _ string: UnsafePointer<CChar>,
         base: Int32 = 10

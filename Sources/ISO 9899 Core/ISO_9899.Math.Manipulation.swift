@@ -29,7 +29,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.copysign(5.0, -1.0)   // -5.0
     /// let result2 = ISO_9899.Math.copysign(-3.0, 2.0)  // 3.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func copysign(_ x: Double, _ y: Double) -> Double {
         return iso9899_copysign(x, y)
     }
@@ -42,7 +42,7 @@ extension ISO_9899.Math {
     ///   - x: The value providing the magnitude
     ///   - y: The value providing the sign
     /// - Returns: A value with magnitude of x and sign of y
-    @inline(__always)
+    @inline(always)
     public static func copysign(_ x: Float, _ y: Float) -> Float {
         return iso9899_copysignf(x, y)
     }
@@ -56,7 +56,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter tag: Optional string tag for NaN payload
     /// - Returns: A quiet NaN value
-    @inline(__always)
+    @inline(always)
     public static func nan(_ tag: UnsafePointer<CChar>) -> Double {
         return unsafe iso9899_nan(tag)
     }
@@ -67,7 +67,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter tag: Optional string tag for NaN payload
     /// - Returns: A quiet NaN value
-    @inline(__always)
+    @inline(always)
     public static func nanf(_ tag: UnsafePointer<CChar>) -> Float {
         return unsafe iso9899_nanf(tag)
     }
@@ -89,7 +89,7 @@ extension ISO_9899.Math {
     /// ```swift
     /// let next = ISO_9899.Math.nextafter(1.0, 2.0)  // Next Double after 1.0 toward 2.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func nextafter(_ x: Double, _ y: Double) -> Double {
         return iso9899_nextafter(x, y)
     }
@@ -102,7 +102,7 @@ extension ISO_9899.Math {
     ///   - x: The starting value
     ///   - y: The direction value
     /// - Returns: The next representable value after x toward y
-    @inline(__always)
+    @inline(always)
     public static func nextafter(_ x: Float, _ y: Float) -> Float {
         return iso9899_nextafterf(x, y)
     }
@@ -119,7 +119,7 @@ extension ISO_9899.Math {
     ///   - x: The starting value
     ///   - y: The direction value (long double)
     /// - Returns: The next representable value after x toward y
-    @inline(__always)
+    @inline(always)
     public static func nexttoward(_ x: Double, _ y: Double) -> Double {
         return iso9899_nexttoward(x, y)
     }
@@ -132,7 +132,7 @@ extension ISO_9899.Math {
     ///   - x: The starting value
     ///   - y: The direction value (long double)
     /// - Returns: The next representable value after x toward y
-    @inline(__always)
+    @inline(always)
     public static func nexttoward(_ x: Float, _ y: Double) -> Float {
         return iso9899_nexttowardf(x, y)
     }

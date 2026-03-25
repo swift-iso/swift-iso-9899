@@ -34,7 +34,7 @@ extension ISO_9899.String.Search {
     ///   - string: Pointer to null-terminated string to search.
     ///   - byte: Byte value to search for.
     /// - Returns: Pointer to the located byte, or `nil` if not found.
-    @inline(__always)
+    @inline(always)
     public static func character(
         in string: UnsafePointer<ISO_9899.String.Char>,
         byte: ISO_9899.String.Char
@@ -50,7 +50,7 @@ extension ISO_9899.String.Search {
     ///   - string: Pointer to null-terminated string to search.
     ///   - byte: Byte value to search for.
     /// - Returns: Mutable pointer to the located byte, or `nil` if not found.
-    @inline(__always)
+    @inline(always)
     public static func character(
         in string: UnsafeMutablePointer<ISO_9899.String.Char>,
         byte: ISO_9899.String.Char
@@ -73,7 +73,7 @@ extension ISO_9899.String.Search {
     ///   - string: Pointer to null-terminated string to search.
     ///   - byte: Byte value to search for.
     /// - Returns: Pointer to the located byte, or `nil` if not found.
-    @inline(__always)
+    @inline(always)
     public static func lastCharacter(
         in string: UnsafePointer<ISO_9899.String.Char>,
         byte: ISO_9899.String.Char
@@ -89,7 +89,7 @@ extension ISO_9899.String.Search {
     ///   - string: Pointer to null-terminated string to search.
     ///   - byte: Byte value to search for.
     /// - Returns: Mutable pointer to the located byte, or `nil` if not found.
-    @inline(__always)
+    @inline(always)
     public static func lastCharacter(
         in string: UnsafeMutablePointer<ISO_9899.String.Char>,
         byte: ISO_9899.String.Char
@@ -113,7 +113,7 @@ extension ISO_9899.String.Search {
     ///   - haystack: Pointer to null-terminated string to search.
     ///   - needle: Pointer to null-terminated substring to find.
     /// - Returns: Pointer to the located substring, or `nil` if not found.
-    @inline(__always)
+    @inline(always)
     public static func substring(
         in haystack: UnsafePointer<ISO_9899.String.Char>,
         find needle: UnsafePointer<ISO_9899.String.Char>
@@ -129,7 +129,7 @@ extension ISO_9899.String.Search {
     ///   - haystack: Pointer to null-terminated string to search.
     ///   - needle: Pointer to null-terminated substring to find.
     /// - Returns: Mutable pointer to the located substring, or `nil` if not found.
-    @inline(__always)
+    @inline(always)
     public static func substring(
         in haystack: UnsafeMutablePointer<ISO_9899.String.Char>,
         find needle: UnsafePointer<ISO_9899.String.Char>
@@ -152,7 +152,7 @@ extension ISO_9899.String.Search {
     ///   - string: Pointer to null-terminated string to search.
     ///   - accept: Pointer to null-terminated string of bytes to find.
     /// - Returns: Pointer to the located byte, or `nil` if not found.
-    @inline(__always)
+    @inline(always)
     public static func anyCharacter(
         in string: UnsafePointer<ISO_9899.String.Char>,
         from accept: UnsafePointer<ISO_9899.String.Char>
@@ -168,7 +168,7 @@ extension ISO_9899.String.Search {
     ///   - string: Pointer to null-terminated string to search.
     ///   - accept: Pointer to null-terminated string of bytes to find.
     /// - Returns: Mutable pointer to the located byte, or `nil` if not found.
-    @inline(__always)
+    @inline(always)
     public static func anyCharacter(
         in string: UnsafeMutablePointer<ISO_9899.String.Char>,
         from accept: UnsafePointer<ISO_9899.String.Char>
@@ -192,7 +192,7 @@ extension ISO_9899.String.Search {
     ///   - string: Pointer to null-terminated string to examine.
     ///   - accept: Pointer to null-terminated string of accepted bytes.
     /// - Returns: Length of the initial segment.
-    @inline(__always)
+    @inline(always)
     public static func span(
         in string: UnsafePointer<ISO_9899.String.Char>,
         accept: UnsafePointer<ISO_9899.String.Char>
@@ -212,7 +212,7 @@ extension ISO_9899.String.Search {
     ///   - string: Pointer to null-terminated string to examine.
     ///   - reject: Pointer to null-terminated string of rejected bytes.
     /// - Returns: Length of the initial segment.
-    @inline(__always)
+    @inline(always)
     public static func complementSpan(
         in string: UnsafePointer<ISO_9899.String.Char>,
         reject: UnsafePointer<ISO_9899.String.Char>

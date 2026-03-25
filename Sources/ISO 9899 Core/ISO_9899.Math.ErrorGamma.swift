@@ -24,7 +24,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.erf(0.0)  // 0.0
     /// let result2 = ISO_9899.Math.erf(1.0) // 0.84270079...
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func erf(_ x: Double) -> Double {
         return iso9899_erf(x)
     }
@@ -35,7 +35,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The error function of x
-    @inline(__always)
+    @inline(always)
     public static func erf(_ x: Float) -> Float {
         return iso9899_erff(x)
     }
@@ -55,7 +55,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.erfc(0.0)  // 1.0
     /// let result2 = ISO_9899.Math.erfc(1.0) // 0.15729920...
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func erfc(_ x: Double) -> Double {
         return iso9899_erfc(x)
     }
@@ -66,7 +66,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The complementary error function of x
-    @inline(__always)
+    @inline(always)
     public static func erfc(_ x: Float) -> Float {
         return iso9899_erfcf(x)
     }
@@ -89,7 +89,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.tgamma(1.0)  // 1.0
     /// let result2 = ISO_9899.Math.tgamma(5.0) // 24.0 (4!)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func tgamma(_ x: Double) -> Double {
         return iso9899_tgamma(x)
     }
@@ -100,7 +100,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The gamma function of x
-    @inline(__always)
+    @inline(always)
     public static func tgamma(_ x: Float) -> Float {
         return iso9899_tgammaf(x)
     }
@@ -121,7 +121,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.lgamma(1.0)  // 0.0
     /// let result2 = ISO_9899.Math.lgamma(5.0) // 3.17805383... (log(24))
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func lgamma(_ x: Double) -> Double {
         return iso9899_lgamma(x)
     }
@@ -132,7 +132,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The natural logarithm of |gamma(x)|
-    @inline(__always)
+    @inline(always)
     public static func lgamma(_ x: Float) -> Float {
         return iso9899_lgammaf(x)
     }

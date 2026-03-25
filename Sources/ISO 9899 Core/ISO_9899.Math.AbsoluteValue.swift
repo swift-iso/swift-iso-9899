@@ -24,7 +24,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.fabs(-3.14)  // 3.14
     /// let result2 = ISO_9899.Math.fabs(2.5)   // 2.5
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func fabs(_ x: Double) -> Double {
         return iso9899_fabs(x)
     }
@@ -35,7 +35,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The absolute value of x
-    @inline(__always)
+    @inline(always)
     public static func fabs(_ x: Float) -> Float {
         return iso9899_fabsf(x)
     }
@@ -59,7 +59,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.hypot(3.0, 4.0)  // 5.0
     /// let distance = ISO_9899.Math.hypot(dx, dy)  // Euclidean distance
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func hypot(_ x: Double, _ y: Double) -> Double {
         return iso9899_hypot(x, y)
     }
@@ -72,7 +72,7 @@ extension ISO_9899.Math {
     ///   - x: First value
     ///   - y: Second value
     /// - Returns: The value of sqrt(x² + y²)
-    @inline(__always)
+    @inline(always)
     public static func hypot(_ x: Float, _ y: Float) -> Float {
         return iso9899_hypotf(x, y)
     }
@@ -92,7 +92,7 @@ extension ISO_9899.Math {
     /// let result2 = ISO_9899.Math.cbrt(27.0) // 3.0
     /// let result3 = ISO_9899.Math.cbrt(-8.0) // -2.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func cbrt(_ x: Double) -> Double {
         return iso9899_cbrt(x)
     }
@@ -103,7 +103,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The cube root of x
-    @inline(__always)
+    @inline(always)
     public static func cbrt(_ x: Float) -> Float {
         return iso9899_cbrtf(x)
     }

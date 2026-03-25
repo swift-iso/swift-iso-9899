@@ -35,7 +35,7 @@ extension ISO_9899.Stdlib.Memory {
     /// - Parameter count: Number of bytes to allocate.
     /// - Returns: Pointer to the allocated memory.
     /// - Throws: `ISO_9899.Errno.Code` if allocation fails.
-    @inline(__always)
+    @inline(always)
     public static func allocate(
         count: Int
     ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
@@ -56,7 +56,7 @@ extension ISO_9899.Stdlib.Memory {
     ///   - size: Size of each element in bytes.
     /// - Returns: Pointer to the allocated memory.
     /// - Throws: `ISO_9899.Errno.Code` if allocation fails.
-    @inline(__always)
+    @inline(always)
     public static func allocateZeroed(
         count: Int,
         size: Int
@@ -80,7 +80,7 @@ extension ISO_9899.Stdlib.Memory {
     /// - Throws: `ISO_9899.Errno.Code` if reallocation fails.
     ///
     /// - Note: If reallocation fails, the original memory is not freed.
-    @inline(__always)
+    @inline(always)
     public static func reallocate(
         _ pointer: UnsafeMutableRawPointer?,
         count: Int
@@ -102,7 +102,7 @@ extension ISO_9899.Stdlib.Memory {
     ///   - size: Size in bytes (must be a multiple of alignment).
     /// - Returns: Pointer to the allocated memory.
     /// - Throws: `ISO_9899.Errno.Code` if allocation fails.
-    @inline(__always)
+    @inline(always)
     public static func allocateAligned(
         alignment: Int,
         size: Int
@@ -120,7 +120,7 @@ extension ISO_9899.Stdlib.Memory {
     /// If `pointer` is NULL, no operation is performed.
     ///
     /// - Parameter pointer: Pointer to memory to deallocate, or NULL.
-    @inline(__always)
+    @inline(always)
     public static func deallocate(_ pointer: UnsafeMutableRawPointer?) {
         unsafe iso9899_free(pointer)
     }

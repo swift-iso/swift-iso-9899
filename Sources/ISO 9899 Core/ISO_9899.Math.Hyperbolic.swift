@@ -25,7 +25,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.sinh(0.0)  // 0.0
     /// let result2 = ISO_9899.Math.sinh(1.0) // 1.17520119...
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func sinh(_ x: Double) -> Double {
         return iso9899_sinh(x)
     }
@@ -36,7 +36,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The hyperbolic sine of x
-    @inline(__always)
+    @inline(always)
     public static func sinh(_ x: Float) -> Float {
         return iso9899_sinhf(x)
     }
@@ -56,7 +56,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.cosh(0.0)  // 1.0
     /// let result2 = ISO_9899.Math.cosh(1.0) // 1.54308063...
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func cosh(_ x: Double) -> Double {
         return iso9899_cosh(x)
     }
@@ -67,7 +67,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The hyperbolic cosine of x
-    @inline(__always)
+    @inline(always)
     public static func cosh(_ x: Float) -> Float {
         return iso9899_coshf(x)
     }
@@ -86,7 +86,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.tanh(0.0)  // 0.0
     /// let result2 = ISO_9899.Math.tanh(1.0) // 0.76159415...
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func tanh(_ x: Double) -> Double {
         return iso9899_tanh(x)
     }
@@ -97,7 +97,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The hyperbolic tangent of x
-    @inline(__always)
+    @inline(always)
     public static func tanh(_ x: Float) -> Float {
         return iso9899_tanhf(x)
     }
@@ -118,7 +118,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.asinh(0.0)  // 0.0
     /// let result2 = ISO_9899.Math.asinh(1.0) // 0.88137358...
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func asinh(_ x: Double) -> Double {
         return iso9899_asinh(x)
     }
@@ -129,7 +129,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The arc hyperbolic sine of x
-    @inline(__always)
+    @inline(always)
     public static func asinh(_ x: Float) -> Float {
         return iso9899_asinhf(x)
     }
@@ -149,7 +149,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.acosh(1.0)  // 0.0
     /// let result2 = ISO_9899.Math.acosh(2.0) // 1.31695789...
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func acosh(_ x: Double) -> Double {
         return iso9899_acosh(x)
     }
@@ -160,7 +160,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value (must be >= 1)
     /// - Returns: The arc hyperbolic cosine of x
-    @inline(__always)
+    @inline(always)
     public static func acosh(_ x: Float) -> Float {
         return iso9899_acoshf(x)
     }
@@ -181,7 +181,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.atanh(0.0)  // 0.0
     /// let result2 = ISO_9899.Math.atanh(0.5) // 0.54930614...
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func atanh(_ x: Double) -> Double {
         return iso9899_atanh(x)
     }
@@ -192,7 +192,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value (must be in [-1, 1])
     /// - Returns: The arc hyperbolic tangent of x
-    @inline(__always)
+    @inline(always)
     public static func atanh(_ x: Float) -> Float {
         return iso9899_atanhf(x)
     }

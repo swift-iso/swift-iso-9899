@@ -35,7 +35,7 @@ extension ISO_9899.String.Order {
     /// Creates an Order from a C comparison result.
     ///
     /// - Parameter cResult: The result from strcmp, memcmp, etc.
-    @inline(__always)
+    @inline(always)
     public init(cResult: Int32) {
         if cResult < 0 {
             self = .less

@@ -39,7 +39,7 @@ extension ISO_9899.Stdlib.Random {
     /// Using the same seed will produce the same sequence.
     ///
     /// - Parameter seed: The seed value.
-    @inline(__always)
+    @inline(always)
     public static func seed(_ seed: UInt32) {
         iso9899_srand(seed)
     }
@@ -51,7 +51,7 @@ extension ISO_9899.Stdlib.Random {
     /// Computes a sequence of pseudo-random integers in the range 0 to `RAND_MAX`.
     ///
     /// - Returns: A pseudo-random integer in the range [0, RAND_MAX].
-    @inline(__always)
+    @inline(always)
     public static func next() -> Int32 {
         iso9899_rand()
     }

@@ -29,7 +29,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.pow(2.0, 3.0)  // 8.0
     /// let gamma = ISO_9899.Math.pow(c, 1.0/2.4)  // Gamma correction
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func pow(_ x: Double, _ y: Double) -> Double {
         return iso9899_pow(x, y)
     }
@@ -42,7 +42,7 @@ extension ISO_9899.Math {
     ///   - x: The base value
     ///   - y: The exponent
     /// - Returns: The value of x raised to the power y
-    @inline(__always)
+    @inline(always)
     public static func pow(_ x: Float, _ y: Float) -> Float {
         return iso9899_powf(x, y)
     }
@@ -61,7 +61,7 @@ extension ISO_9899.Math {
     /// ```swift
     /// let result = ISO_9899.Math.sqrt(16.0)  // 4.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func sqrt(_ x: Double) -> Double {
         return iso9899_sqrt(x)
     }
@@ -72,7 +72,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The square root of x
-    @inline(__always)
+    @inline(always)
     public static func sqrt(_ x: Float) -> Float {
         return iso9899_sqrtf(x)
     }

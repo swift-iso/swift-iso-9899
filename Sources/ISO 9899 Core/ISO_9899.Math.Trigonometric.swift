@@ -24,7 +24,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.sin(.pi / 2)  // 1.0
     /// let angle = ISO_9899.Math.sin(30 * .pi / 180)  // 0.5 (30 degrees)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func sin(_ x: Double) -> Double {
         return iso9899_sin(x)
     }
@@ -35,7 +35,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The angle in radians
     /// - Returns: The sine of x
-    @inline(__always)
+    @inline(always)
     public static func sin(_ x: Float) -> Float {
         return iso9899_sinf(x)
     }
@@ -54,7 +54,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.cos(0)  // 1.0
     /// let angle = ISO_9899.Math.cos(60 * .pi / 180)  // 0.5 (60 degrees)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func cos(_ x: Double) -> Double {
         return iso9899_cos(x)
     }
@@ -65,7 +65,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The angle in radians
     /// - Returns: The cosine of x
-    @inline(__always)
+    @inline(always)
     public static func cos(_ x: Float) -> Float {
         return iso9899_cosf(x)
     }
@@ -83,7 +83,7 @@ extension ISO_9899.Math {
     /// ```swift
     /// let result = ISO_9899.Math.tan(.pi / 4)  // 1.0 (45 degrees)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func tan(_ x: Double) -> Double {
         return iso9899_tan(x)
     }
@@ -94,7 +94,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The angle in radians
     /// - Returns: The tangent of x
-    @inline(__always)
+    @inline(always)
     public static func tan(_ x: Float) -> Float {
         return iso9899_tanf(x)
     }
@@ -110,7 +110,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value (must be in range [-1, 1])
     /// - Returns: The arc sine of x in radians, in the range [−π/2, +π/2]
-    @inline(__always)
+    @inline(always)
     public static func asin(_ x: Double) -> Double {
         return iso9899_asin(x)
     }
@@ -121,7 +121,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value (must be in range [-1, 1])
     /// - Returns: The arc sine of x in radians
-    @inline(__always)
+    @inline(always)
     public static func asin(_ x: Float) -> Float {
         return iso9899_asinf(x)
     }
@@ -135,7 +135,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value (must be in range [-1, 1])
     /// - Returns: The arc cosine of x in radians, in the range [0, +π]
-    @inline(__always)
+    @inline(always)
     public static func acos(_ x: Double) -> Double {
         return iso9899_acos(x)
     }
@@ -146,7 +146,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value (must be in range [-1, 1])
     /// - Returns: The arc cosine of x in radians
-    @inline(__always)
+    @inline(always)
     public static func acos(_ x: Float) -> Float {
         return iso9899_acosf(x)
     }
@@ -159,7 +159,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The arc tangent of x in radians, in the range [−π/2, +π/2]
-    @inline(__always)
+    @inline(always)
     public static func atan(_ x: Double) -> Double {
         return iso9899_atan(x)
     }
@@ -170,7 +170,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The arc tangent of x in radians
-    @inline(__always)
+    @inline(always)
     public static func atan(_ x: Float) -> Float {
         return iso9899_atanf(x)
     }
@@ -187,7 +187,7 @@ extension ISO_9899.Math {
     ///   - y: The y coordinate
     ///   - x: The x coordinate
     /// - Returns: The arc tangent of y/x in radians, in the range [−π, +π]
-    @inline(__always)
+    @inline(always)
     public static func atan2(_ y: Double, _ x: Double) -> Double {
         return iso9899_atan2(y, x)
     }
@@ -200,7 +200,7 @@ extension ISO_9899.Math {
     ///   - y: The y coordinate
     ///   - x: The x coordinate
     /// - Returns: The arc tangent of y/x in radians
-    @inline(__always)
+    @inline(always)
     public static func atan2(_ y: Float, _ x: Float) -> Float {
         return iso9899_atan2f(y, x)
     }

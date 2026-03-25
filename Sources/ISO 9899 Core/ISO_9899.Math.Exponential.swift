@@ -25,7 +25,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.exp(1.0)  // e (≈ 2.71828)
     /// let result2 = ISO_9899.Math.exp(0.0) // 1.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func exp(_ x: Double) -> Double {
         return iso9899_exp(x)
     }
@@ -36,7 +36,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The exponent
     /// - Returns: The value of e raised to the power x
-    @inline(__always)
+    @inline(always)
     public static func exp(_ x: Float) -> Float {
         return iso9899_expf(x)
     }
@@ -56,7 +56,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.exp2(10.0)  // 1024.0
     /// let result2 = ISO_9899.Math.exp2(0.0)  // 1.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func exp2(_ x: Double) -> Double {
         return iso9899_exp2(x)
     }
@@ -67,7 +67,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The exponent
     /// - Returns: The value of 2 raised to the power x
-    @inline(__always)
+    @inline(always)
     public static func exp2(_ x: Float) -> Float {
         return iso9899_exp2f(x)
     }
@@ -89,7 +89,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.log(2.71828)  // ≈ 1.0
     /// let result2 = ISO_9899.Math.log(1.0)     // 0.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func log(_ x: Double) -> Double {
         return iso9899_log(x)
     }
@@ -100,7 +100,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value (must be positive)
     /// - Returns: The natural logarithm of x
-    @inline(__always)
+    @inline(always)
     public static func log(_ x: Float) -> Float {
         return iso9899_logf(x)
     }
@@ -120,7 +120,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.log2(1024.0)  // 10.0
     /// let result2 = ISO_9899.Math.log2(2.0)    // 1.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func log2(_ x: Double) -> Double {
         return iso9899_log2(x)
     }
@@ -131,7 +131,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value (must be positive)
     /// - Returns: The base-2 logarithm of x
-    @inline(__always)
+    @inline(always)
     public static func log2(_ x: Float) -> Float {
         return iso9899_log2f(x)
     }
@@ -151,7 +151,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.log10(1000.0)  // 3.0
     /// let result2 = ISO_9899.Math.log10(10.0)   // 1.0
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func log10(_ x: Double) -> Double {
         return iso9899_log10(x)
     }
@@ -162,7 +162,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value (must be positive)
     /// - Returns: The base-10 logarithm of x
-    @inline(__always)
+    @inline(always)
     public static func log10(_ x: Float) -> Float {
         return iso9899_log10f(x)
     }
@@ -184,7 +184,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.expm1(0.0)      // 0.0
     /// let result2 = ISO_9899.Math.expm1(0.0001)  // 0.00010000500... (accurate for small x)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func expm1(_ x: Double) -> Double {
         return iso9899_expm1(x)
     }
@@ -195,7 +195,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value
     /// - Returns: The value of e^x - 1
-    @inline(__always)
+    @inline(always)
     public static func expm1(_ x: Float) -> Float {
         return iso9899_expm1f(x)
     }
@@ -218,7 +218,7 @@ extension ISO_9899.Math {
     /// let result = ISO_9899.Math.log1p(0.0)      // 0.0
     /// let result2 = ISO_9899.Math.log1p(0.0001)  // 0.00009999500... (accurate for small x)
     /// ```
-    @inline(__always)
+    @inline(always)
     public static func log1p(_ x: Double) -> Double {
         return iso9899_log1p(x)
     }
@@ -229,7 +229,7 @@ extension ISO_9899.Math {
     ///
     /// - Parameter x: The value (must be > -1)
     /// - Returns: The natural logarithm of (1 + x)
-    @inline(__always)
+    @inline(always)
     public static func log1p(_ x: Float) -> Float {
         return iso9899_log1pf(x)
     }
