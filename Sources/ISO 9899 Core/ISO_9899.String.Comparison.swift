@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.24.4 - Comparison functions
 
-internal import CISO9899String
+public import CISO9899String
 
 extension ISO_9899.String {
     /// String comparison functions from `<string.h>`

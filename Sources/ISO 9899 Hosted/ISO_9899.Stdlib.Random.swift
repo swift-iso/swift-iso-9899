@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.22.2 - Pseudo-random sequence generation functions
 
-import CISO9899Stdlib
+public import CISO9899Stdlib
 
 extension ISO_9899.Stdlib {
     /// Pseudo-random number generation.

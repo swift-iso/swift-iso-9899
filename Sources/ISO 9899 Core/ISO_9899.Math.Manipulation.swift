@@ -5,7 +5,7 @@
 //  Manipulation functions (ISO/IEC 9899 Section 7.12.11)
 //
 
-internal import CISO9899Math
+public import CISO9899Math
 
 extension ISO_9899.Math {
     // MARK: - Manipulation functions (Section 7.12.11)

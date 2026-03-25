@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.24.5 - Search functions
 
-internal import CISO9899String
+public import CISO9899String
 
 extension ISO_9899.String {
     /// String search functions from `<string.h>`

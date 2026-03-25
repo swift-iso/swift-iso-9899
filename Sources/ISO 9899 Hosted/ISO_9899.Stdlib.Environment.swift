@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.22.4 - Communication with the environment
 
-import CISO9899Stdlib
+public import CISO9899Stdlib
 
 extension ISO_9899.Stdlib {
     /// Environment access functions.

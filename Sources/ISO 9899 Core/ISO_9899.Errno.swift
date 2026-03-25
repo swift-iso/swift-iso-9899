@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.5 - Errors <errno.h>
 
-internal import CISO9899Errno
+public import CISO9899Errno
 
 extension ISO_9899 {
     /// Section 7.5: Errors `<errno.h>`

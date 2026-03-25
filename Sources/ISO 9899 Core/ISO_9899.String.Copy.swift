@@ -5,7 +5,7 @@
 // ISO/IEC 9899:2018 Section 7.24.3 - Concatenation functions
 // ISO/IEC 9899:2018 Section 7.24.6.3 - The strlen function
 
-internal import CISO9899String
+public import CISO9899String
 
 extension ISO_9899.String {
     /// String copying functions from `<string.h>`

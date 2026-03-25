@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.4 - Character handling <ctype.h>
 
-import CISO9899Ctype
+public import CISO9899Ctype
 
 extension ISO_9899 {
     /// Section 7.4: Character handling `<ctype.h>`

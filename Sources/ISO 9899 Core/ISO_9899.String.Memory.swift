@@ -3,7 +3,7 @@
 //
 // Memory functions (ISO/IEC 9899:2018 Section 7.24.2, 7.24.4, 7.24.5, 7.24.6)
 
-internal import CISO9899String
+public import CISO9899String
 
 extension ISO_9899.String {
     /// Memory operations from `<string.h>`
