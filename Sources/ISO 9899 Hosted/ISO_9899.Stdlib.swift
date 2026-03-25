@@ -3,7 +3,7 @@
 //
 // ISO/IEC 9899:2018 Section 7.22 - General utilities <stdlib.h>
 
-public import CISO9899Stdlib
+internal import CISO9899Stdlib
 
 extension ISO_9899 {
     /// Section 7.22: General utilities `<stdlib.h>`
