@@ -27,7 +27,7 @@ extension ISO_9899 {
     /// - `String_Primitives.String`: OS-native path strings (`Char` varies by platform)
     ///
     /// These are different domains with different semantics.
-    @safe public struct String: ~Copyable {
+    @frozen @safe public struct String: ~Copyable {
         /// The underlying pointer to the null-terminated byte sequence.
         @usableFromInline
         internal let pointer: UnsafeMutablePointer<Char>
