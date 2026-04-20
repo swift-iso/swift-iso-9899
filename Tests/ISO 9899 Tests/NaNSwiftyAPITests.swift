@@ -5,22 +5,22 @@ import Testing
 @Suite("NaN Creation - Swifty API")
 struct NaNSwiftyAPITests {
 
-    @Test("Double.c.nan() creates NaN")
-    func doubleNanBasic() {
+    @Test
+    func `Double.c.nan() creates NaN`() {
         let result = Double.c.nan()
         #expect(result.isNaN)
         #expect(result.c.isNaN)
     }
 
-    @Test("Double.c.nan(tag) creates NaN with payload")
-    func doubleNanWithTag() {
+    @Test
+    func `Double.c.nan(tag) creates NaN with payload`() {
         let result = Double.c.nan("overflow")
         #expect(result.isNaN)
         #expect(result.c.isNaN)
     }
 
-    @Test("Different tags produce different bit patterns")
-    func doubleNanDifferentPayloads() {
+    @Test
+    func `Different tags produce different bit patterns`() {
         let nan1 = Double.c.nan("")
         let nan2 = Double.c.nan("1")
         let nan3 = Double.c.nan("2")
@@ -35,22 +35,22 @@ struct NaNSwiftyAPITests {
         #expect(nan2.bitPattern != nan3.bitPattern)
     }
 
-    @Test("Float.c.nan() creates NaN")
-    func floatNanBasic() {
+    @Test
+    func `Float.c.nan() creates NaN`() {
         let result = Float.c.nan()
         #expect(result.isNaN)
         #expect(result.c.isNaN)
     }
 
-    @Test("Float.c.nan(tag) creates NaN with payload")
-    func floatNanWithTag() {
+    @Test
+    func `Float.c.nan(tag) creates NaN with payload`() {
         let result = Float.c.nan("underflow")
         #expect(result.isNaN)
         #expect(result.c.isNaN)
     }
 
-    @Test("NaN with payload has correct classification")
-    func nanClassification() {
+    @Test
+    func `NaN with payload has correct classification`() {
         let result = Double.c.nan("test")
         #expect(result.c.classification == .nan)
         #expect(result.c.isNaN == true)
@@ -59,8 +59,8 @@ struct NaNSwiftyAPITests {
         #expect(result.c.isNormal == false)
     }
 
-    @Test("NaN comparisons work correctly")
-    func nanComparisons() {
+    @Test
+    func `NaN comparisons work correctly`() {
         let nan1 = Double.c.nan("a")
         let nan2 = Double.c.nan("b")
 
@@ -74,8 +74,8 @@ struct NaNSwiftyAPITests {
         #expect(nan1.c.isUnordered(with: 5.0) == true)
     }
 
-    @Test("Authoritative API still works")
-    func authoritativeAPICompatibility() {
+    @Test
+    func `Authoritative API still works`() {
         let swiftyNaN = Double.c.nan("auth")
         let authNaN = "auth".withCString { ISO_9899.Math.nan($0) }
 
