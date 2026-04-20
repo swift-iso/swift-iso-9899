@@ -69,7 +69,7 @@ extension ISO_9899.String {
     /// Allocates new storage and copies the content.
     @inlinable
     public init(copying view: borrowing ISO_9899.String.View) {
-        let length = view.length
+        let length = view.count
         let buffer = UnsafeMutablePointer<ISO_9899.String.Char>.allocate(capacity: length + 1)
         _ = unsafe iso9899_strcpy(buffer, view.pointer)
         unsafe self.init(adopting: buffer, count: length)
@@ -82,7 +82,7 @@ extension ISO_9899.String {
     /// - Precondition: `pointer` must point to a null-terminated sequence.
     @inlinable
     public init(copying pointer: UnsafePointer<ISO_9899.String.Char>) {
-        let length = unsafe ISO_9899.String.length(of: pointer)
+        let length = unsafe ISO_9899.String.Length.strlen(pointer)
         let buffer = UnsafeMutablePointer<ISO_9899.String.Char>.allocate(capacity: length + 1)
         _ = unsafe iso9899_strcpy(buffer, pointer)
         unsafe self.init(adopting: buffer, count: length)
@@ -114,7 +114,7 @@ extension ISO_9899.String {
     @inlinable
     public var view: ISO_9899.String.View {
         @_lifetime(borrow self) borrowing get {
-            let view = unsafe ISO_9899.String.View(UnsafePointer(pointer))
+            let view = unsafe ISO_9899.String.View(UnsafePointer(pointer), count: count)
             return unsafe _overrideLifetime(view, borrowing: self)
         }
     }

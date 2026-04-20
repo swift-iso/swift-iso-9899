@@ -16,13 +16,36 @@ extension ISO_9899.String {
     @safe public struct View: ~Copyable, ~Escapable {
         /// The underlying pointer to the null-terminated byte sequence.
         public let pointer: UnsafePointer<Char>
+
+        /// The length in bytes, excluding the null terminator.
+        public let count: Int
+
+        /// Creates a view from a pointer with a known length.
+        ///
+        /// The lifetime of this `View` value is tied to the lifetime of `pointer`.
+        ///
+        /// - Precondition: `pointer` must point to at least `count + 1` bytes,
+        ///   with `pointer[count]` equal to the null terminator.
+        @inlinable
+        @_lifetime(borrow pointer)
+        public init(_ pointer: UnsafePointer<ISO_9899.String.Char>, count: Int) {
+            #if DEBUG
+            precondition(unsafe (pointer[count] == ISO_9899.String.terminator), "ISO_9899.String.View: pointer[count] must be the null terminator")
+            #endif
+            unsafe (self.pointer = pointer)
+            self.count = count
+        }
     }
 }
 
 // MARK: - Initialization
 
 extension ISO_9899.String.View {
-    /// Creates a view from a pointer.
+    /// Creates a view from a pointer of unknown length.
+    ///
+    /// Scans the byte sequence to compute the length. Use this when adopting
+    /// a raw `char *` returned by a C API where the length is not available.
+    /// Prefer the `init(_:count:)` overload when count is known.
     ///
     /// The lifetime of this `View` value is tied to the lifetime of `pointer`.
     ///
@@ -33,7 +56,8 @@ extension ISO_9899.String.View {
         #if DEBUG
         unsafe Self.debugValidateTermination(pointer)
         #endif
-        unsafe (self.pointer = pointer)
+        let count = unsafe ISO_9899.String.Length.strlen(pointer)
+        unsafe self.init(pointer, count: count)
     }
 }
 
@@ -75,6 +99,6 @@ extension ISO_9899.String.View {
     /// The length in bytes, excluding the null terminator.
     @inlinable
     public var length: Int {
-        unsafe ISO_9899.String.length(of: pointer)
+        count
     }
 }
