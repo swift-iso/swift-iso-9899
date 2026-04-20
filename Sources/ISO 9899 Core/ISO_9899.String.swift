@@ -118,6 +118,17 @@ extension ISO_9899.String {
             return unsafe _overrideLifetime(view, borrowing: self)
         }
     }
+
+    /// Returns a `Span` view of the string content, excluding the null terminator.
+    ///
+    /// Mirrors `String_Primitives.String.span`. O(1) — uses the stored count.
+    @inlinable
+    public var span: Span<Char> {
+        @_lifetime(borrow self) borrowing get {
+            let span = unsafe Span(_unsafeStart: UnsafePointer(pointer), count: count)
+            return unsafe _overrideLifetime(span, borrowing: self)
+        }
+    }
 }
 
 // MARK: - Ownership Transfer
