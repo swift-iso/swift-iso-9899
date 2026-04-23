@@ -23,7 +23,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../../swift-primitives/swift-error-primitives")
+        .package(path: "../../swift-primitives/swift-error-primitives"),
+        .package(path: "../../swift-primitives/swift-ownership-primitives")
     ],
     targets: [
         // MARK: - C Shim Modules (Core)
@@ -67,7 +68,8 @@ let package = Package(
                 "CISO9899Math",
                 "CISO9899Errno",
                 "CISO9899String",
-                .product(name: "Error Primitives", package: "swift-error-primitives")
+                .product(name: "Error Primitives", package: "swift-error-primitives"),
+                .product(name: "Ownership Primitives", package: "swift-ownership-primitives")
             ],
             path: "Sources/ISO 9899 Core",
             swiftSettings: [

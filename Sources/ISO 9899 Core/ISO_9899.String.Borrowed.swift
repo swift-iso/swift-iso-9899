@@ -1,10 +1,18 @@
-// ISO_9899.String.View.swift
+// ISO_9899.String.Borrowed.swift
 // swift-iso-9899
 //
-// Non-escapable view of ISO C byte string
+// Non-escapable borrowed view of ISO C byte string
+
+public import Ownership_Primitives
+
+// MARK: - Ownership.Borrow.`Protocol` Conformance
+
+extension ISO_9899.String: Ownership.Borrow.`Protocol` {}
+
+// MARK: - Borrowed
 
 extension ISO_9899.String {
-    /// Non-escapable view of a null-terminated ISO C byte string.
+    /// Non-escapable borrowed view of a null-terminated ISO C byte string.
     ///
     /// Does not own storage. Valid only for the duration of the borrowing scope.
     /// The referenced memory must remain valid and unmodified while borrowed.
@@ -13,16 +21,16 @@ extension ISO_9899.String {
     /// the scope where it was created — preventing use-after-free bugs.
     ///
     /// Invariant: Points to a null-terminated byte sequence.
-    @safe public struct View: ~Copyable, ~Escapable {
+    @safe public struct Borrowed: ~Copyable, ~Escapable {
         /// The underlying pointer to the null-terminated byte sequence.
         public let pointer: UnsafePointer<Char>
 
         /// The length in bytes, excluding the null terminator.
         public let count: Int
 
-        /// Creates a view from a pointer with a known length.
+        /// Creates a borrowed view from a pointer with a known length.
         ///
-        /// The lifetime of this `View` value is tied to the lifetime of `pointer`.
+        /// The lifetime of this `Borrowed` value is tied to the lifetime of `pointer`.
         ///
         /// - Precondition: `pointer` must point to at least `count + 1` bytes,
         ///   with `pointer[count]` equal to the null terminator.
@@ -30,7 +38,7 @@ extension ISO_9899.String {
         @_lifetime(borrow pointer)
         public init(_ pointer: UnsafePointer<ISO_9899.String.Char>, count: Int) {
             #if DEBUG
-            precondition(unsafe (pointer[count] == ISO_9899.String.terminator), "ISO_9899.String.View: pointer[count] must be the null terminator")
+            precondition(unsafe (pointer[count] == ISO_9899.String.terminator), "ISO_9899.String.Borrowed: pointer[count] must be the null terminator")
             #endif
             unsafe (self.pointer = pointer)
             self.count = count
@@ -40,14 +48,14 @@ extension ISO_9899.String {
 
 // MARK: - Initialization
 
-extension ISO_9899.String.View {
-    /// Creates a view from a pointer of unknown length.
+extension ISO_9899.String.Borrowed {
+    /// Creates a borrowed view from a pointer of unknown length.
     ///
     /// Scans the byte sequence to compute the length. Use this when adopting
     /// a raw `char *` returned by a C API where the length is not available.
     /// Prefer the `init(_:count:)` overload when count is known.
     ///
-    /// The lifetime of this `View` value is tied to the lifetime of `pointer`.
+    /// The lifetime of this `Borrowed` value is tied to the lifetime of `pointer`.
     ///
     /// - Precondition: `pointer` must point to a null-terminated sequence.
     @inlinable
@@ -64,7 +72,7 @@ extension ISO_9899.String.View {
 // MARK: - Debug Validation
 
 #if DEBUG
-extension ISO_9899.String.View {
+extension ISO_9899.String.Borrowed {
     /// Maximum bytes to scan when validating termination in debug builds.
     @usableFromInline
     internal static let maxDebugScanLength = 16 * 1024 * 1024 // 16 MiB
@@ -80,14 +88,14 @@ extension ISO_9899.String.View {
             unsafe (current = current.successor())
             scanned += 1
         }
-        assertionFailure("ISO_9899.String.View: pointer does not appear to be null-terminated within \(maxDebugScanLength) bytes")
+        assertionFailure("ISO_9899.String.Borrowed: pointer does not appear to be null-terminated within \(maxDebugScanLength) bytes")
     }
 }
 #endif
 
 // MARK: - Access
 
-extension ISO_9899.String.View {
+extension ISO_9899.String.Borrowed {
     /// Executes a closure with the underlying pointer.
     @inlinable
     public borrowing func withUnsafePointer<R: ~Copyable, E: Swift.Error>(
@@ -104,7 +112,7 @@ extension ISO_9899.String.View {
 
     /// Returns a `Span` view of the string content, excluding the null terminator.
     ///
-    /// Mirrors `String_Primitives.String.View.span`. O(1) — uses the stored count.
+    /// Mirrors `String_Primitives.String.Borrowed.span`. O(1) — uses the stored count.
     @inlinable
     public var span: Span<ISO_9899.String.Char> {
         @_lifetime(copy self) borrowing get {
