@@ -23,8 +23,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../../swift-primitives/swift-error-primitives"),
-        .package(path: "../../swift-primitives/swift-ownership-primitives")
+        .package(url: "https://github.com/swift-primitives/swift-error-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-ownership-primitives.git", branch: "main")
     ],
     targets: [
         // MARK: - C Shim Modules (Core)
