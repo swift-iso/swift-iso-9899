@@ -114,7 +114,7 @@ extension ISO_9899.String.Borrowed {
     ///
     /// Mirrors `String_Primitives.String.Borrowed.span`. O(1) — uses the stored count.
     @inlinable
-    public var span: Span<ISO_9899.String.Char> {
+    public var span: Swift.Span<ISO_9899.String.Char> {
         @_lifetime(copy self) borrowing get {
             let span = unsafe Span(_unsafeStart: pointer, count: count)
             return unsafe _overrideLifetime(span, copying: self)
