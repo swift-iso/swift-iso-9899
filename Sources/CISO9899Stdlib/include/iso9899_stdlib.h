@@ -9,12 +9,21 @@
 #define ISO9899_STDLIB_H
 
 #include <stdlib.h>
+#include <stdint.h>
 
 // String conversion functions (Section 7.22.1)
-// These are typically real functions, but we wrap for consistency
+// These are typically real functions, but we wrap for consistency.
+//
+// `long`-returning conversions (atol / strtol / strtoul) return via pointer-width
+// intptr_t/uintptr_t rather than C `long`. C `long` is 64-bit on LP64 (macOS/Linux)
+// but 32-bit on LLP64 (Windows), so it imports into Swift as `Int`/`UInt` on LP64
+// but `Int32`/`UInt32` on Windows — mismatching the Swift wrappers' `Int`/`UInt`.
+// intptr_t/uintptr_t are pointer-width on every platform, so they import as Swift
+// `Int`/`UInt` uniformly (like ssize_t), letting the wrappers stay conversion-free.
+// The C-level widening of the platform `long` result is value-preserving.
 static inline double iso9899_atof(const char *nptr) { return atof(nptr); }
 static inline int iso9899_atoi(const char *nptr) { return atoi(nptr); }
-static inline long iso9899_atol(const char *nptr) { return atol(nptr); }
+static inline intptr_t iso9899_atol(const char *nptr) { return atol(nptr); }
 static inline long long iso9899_atoll(const char *nptr) { return atoll(nptr); }
 
 static inline double iso9899_strtod(const char *nptr, char **endptr) {
@@ -26,13 +35,13 @@ static inline float iso9899_strtof(const char *nptr, char **endptr) {
 static inline long double iso9899_strtold(const char *nptr, char **endptr) {
     return strtold(nptr, endptr);
 }
-static inline long iso9899_strtol(const char *nptr, char **endptr, int base) {
+static inline intptr_t iso9899_strtol(const char *nptr, char **endptr, int base) {
     return strtol(nptr, endptr, base);
 }
 static inline long long iso9899_strtoll(const char *nptr, char **endptr, int base) {
     return strtoll(nptr, endptr, base);
 }
-static inline unsigned long iso9899_strtoul(const char *nptr, char **endptr, int base) {
+static inline uintptr_t iso9899_strtoul(const char *nptr, char **endptr, int base) {
     return strtoul(nptr, endptr, base);
 }
 static inline unsigned long long iso9899_strtoull(const char *nptr, char **endptr, int base) {

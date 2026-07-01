@@ -55,6 +55,8 @@ extension ISO_9899.Stdlib.Conversion {
     /// - Returns: The converted value.
     @inline(always)
     public static func toLong(_ string: UnsafePointer<CChar>) -> Int {
+        // The C shim returns pointer-width intptr_t (see iso9899_stdlib.h), which
+        // imports as Swift `Int` on every platform — no conversion needed.
         unsafe iso9899_atol(string)
     }
 
@@ -117,6 +119,7 @@ extension ISO_9899.Stdlib.Conversion {
         base: Int32 = 10
     ) -> (value: Int, end: UnsafeMutablePointer<CChar>?) {
         var end: UnsafeMutablePointer<CChar>?
+        // The C shim returns pointer-width intptr_t → Swift `Int` on every platform.
         let value = unsafe iso9899_strtol(string, &end, base)
         return unsafe (value, end)
     }
@@ -153,6 +156,7 @@ extension ISO_9899.Stdlib.Conversion {
         base: Int32 = 10
     ) -> (value: UInt, end: UnsafeMutablePointer<CChar>?) {
         var end: UnsafeMutablePointer<CChar>?
+        // The C shim returns pointer-width uintptr_t → Swift `UInt` on every platform.
         let value = unsafe iso9899_strtoul(string, &end, base)
         return unsafe (value, end)
     }
