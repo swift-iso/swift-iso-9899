@@ -199,4 +199,3 @@ extension ISO_9899.Errno.Code {
     /// Value too large for defined data type.
     public static let overflow = Self(rawValue: iso9899_EOVERFLOW())
 }
-

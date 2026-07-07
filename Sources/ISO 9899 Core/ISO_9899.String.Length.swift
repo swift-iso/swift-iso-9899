@@ -24,4 +24,3 @@ extension ISO_9899.String.Length {
         unsafe iso9899_strlen(string)
     }
 }
-
