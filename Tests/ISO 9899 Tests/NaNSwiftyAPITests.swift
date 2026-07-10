@@ -2,8 +2,8 @@ import Testing
 
 @testable import ISO_9899
 
-@Suite("NaN Creation - Swifty API")
-struct NaNSwiftyAPITests {
+@Suite
+struct `ISO_9899.Math - NaN Creation (Swifty API)` {
 
     @Test
     func `Double.c.nan() creates NaN`() {
@@ -32,7 +32,12 @@ struct NaNSwiftyAPITests {
 
         // But with different bit patterns (payloads)
         // Note: Empty string might produce same as some default
-        #expect(nan2.bitPattern != nan3.bitPattern)
+        #if !os(Windows)
+            // Windows UCRT's nan() ignores the string tag, so all tags collapse
+            // to the canonical quiet-NaN bit pattern. The payload is
+            // implementation-defined (see Double+ISO_9899.swift:460-461).
+            #expect(nan2.bitPattern != nan3.bitPattern)
+        #endif
     }
 
     @Test
