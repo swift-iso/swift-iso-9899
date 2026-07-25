@@ -1,5 +1,7 @@
 # swift-iso-9899
 
+![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
+
 Foundation-free Swift implementation of ISO/IEC 9899 (C Standard) mathematical functions.
 
 ## Overview
