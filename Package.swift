@@ -8,7 +8,7 @@ let package = Package(
         .iOS(.v26),
         .tvOS(.v26),
         .watchOS(.v26),
-        .visionOS(.v26)
+        .visionOS(.v26),
     ],
     products: [
         // Core: errno, string memory ops, math - minimal libc surface
@@ -20,11 +20,11 @@ let package = Package(
         .library(
             name: "ISO 9899",
             targets: ["ISO 9899"]
-        )
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/swift-primitives/swift-error-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-ownership-primitives.git", branch: "main")
+        .package(url: "https://github.com/swift-primitives/swift-ownership-primitives.git", branch: "main"),
     ],
     targets: [
         // MARK: - C Shim Modules (Core)
@@ -69,7 +69,7 @@ let package = Package(
                 "CISO9899Errno",
                 "CISO9899String",
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Ownership Primitives", package: "swift-ownership-primitives")
+                .product(name: "Ownership Primitives", package: "swift-ownership-primitives"),
             ],
             path: "Sources/ISO 9899 Core",
             swiftSettings: [
@@ -84,7 +84,7 @@ let package = Package(
             dependencies: [
                 "ISO 9899 Core",
                 "CISO9899Ctype",
-                "CISO9899Stdlib"
+                "CISO9899Stdlib",
             ],
             path: "Sources/ISO 9899 Hosted",
             swiftSettings: [
@@ -103,13 +103,12 @@ let package = Package(
         .testTarget(
             name: "ISO 9899 Tests",
             dependencies: [
-                "ISO 9899",
+                "ISO 9899"
             ]
         ),
     ],
     swiftLanguageModes: [.v6]
 )
-
 
 for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
     let ecosystem: [SwiftSetting] = [
