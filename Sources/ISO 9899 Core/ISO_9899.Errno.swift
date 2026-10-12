@@ -32,7 +32,7 @@ extension ISO_9899.Errno {
 
 extension ISO_9899.Errno {
 
-    public struct Code: RawRepresentable, Equatable, Hashable, Sendable, Swift.Error {
+    public struct Code: RawRepresentable, Equatable, Hashable, Sendable, Swift::Error {
         public let rawValue: Int32
 
         @inline(always)

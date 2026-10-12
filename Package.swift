@@ -64,9 +64,9 @@ let package = Package(
         .target(
             name: "ISO 9899 Core",
             dependencies: [
-                "ISO 9899 Math Shims",
-                "ISO 9899 Errno Shims",
-                "ISO 9899 String Shims",
+                .target(name: "ISO 9899 Math Shims"),
+                .target(name: "ISO 9899 Errno Shims"),
+                .target(name: "ISO 9899 String Shims"),
                 .product(name: "Error", package: "swift-error"),
                 .product(name: "Ownership", package: "swift-ownership"),
             ],
@@ -79,9 +79,9 @@ let package = Package(
         .target(
             name: "ISO 9899 Hosted",
             dependencies: [
-                "ISO 9899 Core",
-                "ISO 9899 Ctype Shims",
-                "ISO 9899 Stdlib Shims",
+                .target(name: "ISO 9899 Core"),
+                .target(name: "ISO 9899 Ctype Shims"),
+                .target(name: "ISO 9899 Stdlib Shims"),
             ],
             path: "Sources/ISO 9899 Hosted",
             swiftSettings: [
@@ -91,14 +91,14 @@ let package = Package(
 
         .target(
             name: "ISO 9899",
-            dependencies: ["ISO 9899 Hosted"],
+            dependencies: [.target(name: "ISO 9899 Hosted")],
             path: "Sources/ISO 9899"
         ),
 
         .testTarget(
             name: "ISO 9899 Tests",
             dependencies: [
-                "ISO 9899"
+                .target(name: "ISO 9899")
             ]
         ),
     ],
@@ -106,16 +106,14 @@ let package = Package(
 )
 
 for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    let ecosystem: [SwiftSetting] = [
+    target.swiftSettings = (target.swiftSettings ?? []) + [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
         .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+        .enableUpcomingFeature("InferIsolatedConformances"),
         .enableExperimentalFeature("Lifetimes"),
+        .treatAllWarnings(as: .error),
     ]
-
-    let package: [SwiftSetting] = []
-
-    target.swiftSettings = (target.swiftSettings ?? []) + ecosystem + package
 }

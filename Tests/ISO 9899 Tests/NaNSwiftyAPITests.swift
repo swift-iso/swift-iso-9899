@@ -75,7 +75,7 @@ struct `ISO_9899.Math - NaN Creation (Swifty API)` {
     @Test
     func `Authoritative API still works`() {
         let swiftyNaN = Double.c.nan("auth")
-        let authNaN = "auth".withCString { ISO_9899.Math.nan($0) }
+        let authNaN = "auth".withCString { unsafe ISO_9899.Math.nan($0) }
 
         #expect(swiftyNaN.isNaN)
         #expect(ISO_9899.Math.isnan(authNaN))

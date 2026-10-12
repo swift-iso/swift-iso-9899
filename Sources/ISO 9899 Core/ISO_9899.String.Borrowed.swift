@@ -67,7 +67,7 @@ extension ISO_9899.String.Borrowed {
 extension ISO_9899.String.Borrowed {
 
     @inlinable
-    public borrowing func withUnsafePointer<R: ~Copyable, E: Swift.Error>(
+    public borrowing func withUnsafePointer<R: ~Copyable, E: Swift::Error>(
         _ body: (UnsafePointer<ISO_9899.String.Char>) throws(E) -> R
     ) throws(E) -> R {
         try unsafe body(pointer)
@@ -79,7 +79,7 @@ extension ISO_9899.String.Borrowed {
     }
 
     @inlinable
-    public var span: Swift.Span<ISO_9899.String.Char> {
+    public var span: Swift::Span<ISO_9899.String.Char> {
         @_lifetime(copy self) borrowing get {
             let span = unsafe Span(_unsafeStart: pointer, count: count)
             return unsafe _overrideLifetime(span, copying: self)
