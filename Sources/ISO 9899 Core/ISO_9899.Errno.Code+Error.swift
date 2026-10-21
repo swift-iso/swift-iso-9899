@@ -18,8 +18,10 @@ extension ISO_9899.Errno.Code {
 
     @inlinable
     public init(posix code: Error::Error.Code) {
-        precondition(code.isPosix, "Expected POSIX error code, got Windows error")
-        self.init(rawValue: code.posix!)
+        guard let posix = code.posix else {
+            preconditionFailure("Expected POSIX error code, got Windows error")
+        }
+        self.init(rawValue: posix)
     }
 }
 
