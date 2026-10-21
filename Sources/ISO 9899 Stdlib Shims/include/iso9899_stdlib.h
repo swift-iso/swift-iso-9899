@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 static inline double iso9899_atof(const char *nptr) { return atof(nptr); }
 static inline int iso9899_atoi(const char *nptr) { return atoi(nptr); }
 static inline intptr_t iso9899_atol(const char *nptr) { return atol(nptr); }
@@ -55,5 +58,7 @@ static inline char *iso9899_getenv(const char *name) { return getenv(name); }
 static inline int iso9899_abs(int j) { return abs(j); }
 static inline long iso9899_labs(long j) { return labs(j); }
 static inline long long iso9899_llabs(long long j) { return llabs(j); }
+
+#pragma clang diagnostic pop
 
 #endif

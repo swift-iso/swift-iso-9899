@@ -4,6 +4,9 @@
 #include <string.h>
 #include <stdint.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 static inline void *iso9899_memcpy(void *dest, const void *src, size_t n) {
     return memcpy(dest, src, n);
 }
@@ -95,5 +98,7 @@ static inline void *iso9899_memset(void *s, int c, size_t n) {
 static inline size_t iso9899_strlen(const uint8_t *s) {
     return strlen((const char *)s);
 }
+
+#pragma clang diagnostic pop
 
 #endif
