@@ -31,15 +31,6 @@ extension ISO_9899.Errno {
 }
 
 extension ISO_9899.Errno {
-
-    public struct Code: RawRepresentable, Equatable, Hashable, Sendable, Swift::Error {
-        public let rawValue: Int32
-
-        @inline(always)
-        public init(rawValue: Int32) {
-            self.rawValue = rawValue
-        }
-    }
 }
 
 extension ISO_9899.Errno.Code {
