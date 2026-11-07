@@ -2,9 +2,15 @@ import Testing
 
 @testable import ISO_9899
 
-@Suite
-struct `ISO_9899.Math - Trigonometric Functions` {
+enum `ISO_9899.Math.Trigonometric Tests` {}
 
+extension `ISO_9899.Math.Trigonometric Tests` {
+    @Suite
+    struct `ISO_9899.Math - Trigonometric Functions` {
+    }
+}
+
+extension `ISO_9899.Math.Trigonometric Tests`.`ISO_9899.Math - Trigonometric Functions` {
     @Suite
     struct `sin() - Basic Functionality` {
 

@@ -2,9 +2,15 @@ import Testing
 
 @testable import ISO_9899
 
-@Suite
-struct `ISO_9899.Math - Edge Cases` {
+enum `ISO_9899.Math.Edge Cases Tests` {}
 
+extension `ISO_9899.Math.Edge Cases Tests` {
+    @Suite
+    struct `ISO_9899.Math - Edge Cases` {
+    }
+}
+
+extension `ISO_9899.Math.Edge Cases Tests`.`ISO_9899.Math - Edge Cases` {
     @Suite
     struct `pow() - Special Values` {
 

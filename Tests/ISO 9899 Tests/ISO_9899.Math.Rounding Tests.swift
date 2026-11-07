@@ -2,9 +2,15 @@ import Testing
 
 @testable import ISO_9899
 
-@Suite
-struct `ISO_9899.Math - Rounding Functions` {
+enum `ISO_9899.Math.Rounding Tests` {}
 
+extension `ISO_9899.Math.Rounding Tests` {
+    @Suite
+    struct `ISO_9899.Math - Rounding Functions` {
+    }
+}
+
+extension `ISO_9899.Math.Rounding Tests`.`ISO_9899.Math - Rounding Functions` {
     @Suite
     struct `ceil() - Basic Functionality` {
 

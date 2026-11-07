@@ -2,9 +2,15 @@ import Testing
 
 @testable import ISO_9899
 
-@Suite
-struct `ISO_9899.Math - Power Functions` {
+enum `ISO_9899.Math.Power Tests` {}
 
+extension `ISO_9899.Math.Power Tests` {
+    @Suite
+    struct `ISO_9899.Math - Power Functions` {
+    }
+}
+
+extension `ISO_9899.Math.Power Tests`.`ISO_9899.Math - Power Functions` {
     @Suite
     struct `pow() - Basic Functionality` {
 
