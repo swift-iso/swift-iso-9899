@@ -62,7 +62,7 @@ extension `Performance Tests` {
         @Test(.timed(threshold: .milliseconds(200)))
         func `color space conversion simulation - 10K iterations`() {
 
-            for i in 0..<10_000 {
+            (0..<10_000).forEach { i in
                 let h = Double(i % 360)
                 let c = 50.0
                 let radians = h * Double.pi / 180.0
@@ -74,7 +74,7 @@ extension `Performance Tests` {
         @Test(.timed(threshold: .milliseconds(100)))
         func `gamma correction simulation - 10K iterations`() {
 
-            for i in 0..<10_000 {
+            (0..<10_000).forEach { i in
                 let c = Double(i % 256) / 255.0
                 _ = ISO_9899.Math.pow(c, 1.0 / 2.4)
             }
