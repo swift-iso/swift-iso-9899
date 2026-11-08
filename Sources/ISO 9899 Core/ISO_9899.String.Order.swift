@@ -14,12 +14,12 @@ extension ISO_9899.String.Order {
 
     @inline(always)
     public init(cResult: Int32) {
-        if cResult < 0 {
-            self = .less
+        self = if cResult < 0 {
+            .less
         } else if cResult > 0 {
-            self = .greater
+            .greater
         } else {
-            self = .equal
+            .equal
         }
     }
 }

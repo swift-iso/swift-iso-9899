@@ -19,16 +19,16 @@ extension ISO_9899.Math {
     public static func fpclassify(_ x: Double) -> FloatingPointClass {
         _ = iso9899_fpclassify_d(x)
 
-        if x.isNaN {
-            return .nan
+        return if x.isNaN {
+            .nan
         } else if x.isInfinite {
-            return .infinite
+            .infinite
         } else if x == 0 {
-            return .zero
+            .zero
         } else if abs(x) < Double.leastNormalMagnitude {
-            return .subnormal
+            .subnormal
         } else {
-            return .normal
+            .normal
         }
     }
 
@@ -36,16 +36,16 @@ extension ISO_9899.Math {
     public static func fpclassify(_ x: Float) -> FloatingPointClass {
         _ = iso9899_fpclassify_f(x)
 
-        if x.isNaN {
-            return .nan
+        return if x.isNaN {
+            .nan
         } else if x.isInfinite {
-            return .infinite
+            .infinite
         } else if x == 0 {
-            return .zero
+            .zero
         } else if abs(x) < Float.leastNormalMagnitude {
-            return .subnormal
+            .subnormal
         } else {
-            return .normal
+            .normal
         }
     }
 
