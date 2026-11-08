@@ -1,1 +1,1 @@
-@_exported import Error
+@_exported public import Error
