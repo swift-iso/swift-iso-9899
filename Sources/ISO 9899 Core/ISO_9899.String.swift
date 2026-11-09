@@ -19,7 +19,7 @@ extension ISO_9899 {
 extension ISO_9899.String {
 
     @inlinable
-    public init(adopting pointer: UnsafeMutablePointer<ISO_9899.String.Char>, count: Int) {
+    public init(allocated pointer: UnsafeMutablePointer<ISO_9899.String.Char>, count: Int) {
         #if DEBUG
             precondition(
                 unsafe (pointer[count] == ISO_9899.String.terminator),
@@ -35,7 +35,7 @@ extension ISO_9899.String {
         let length = view.count
         let buffer = UnsafeMutablePointer<ISO_9899.String.Char>.allocate(capacity: length + 1)
         _ = unsafe iso9899_strcpy(buffer, view.pointer)
-        unsafe self.init(adopting: buffer, count: length)
+        unsafe self.init(allocated: buffer, count: length)
     }
 
     @inlinable
@@ -43,7 +43,7 @@ extension ISO_9899.String {
         let length = unsafe ISO_9899.String.Length.strlen(pointer)
         let buffer = UnsafeMutablePointer<ISO_9899.String.Char>.allocate(capacity: length + 1)
         _ = unsafe iso9899_strcpy(buffer, pointer)
-        unsafe self.init(adopting: buffer, count: length)
+        unsafe self.init(allocated: buffer, count: length)
     }
 }
 
