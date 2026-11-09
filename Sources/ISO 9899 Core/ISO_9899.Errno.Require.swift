@@ -8,10 +8,10 @@ extension ISO_9899.Errno.Require {
     @inline(always)
     public static func pointer<T>(
         _ operation: () -> UnsafeMutablePointer<T>?
-    ) throws(ISO_9899.Errno.Code) -> UnsafeMutablePointer<T> {
+    ) throws(ISO_9899.Errno.Require.Error) -> UnsafeMutablePointer<T> {
         ISO_9899.Errno.clear()
         guard let result = unsafe operation() else {
-            throw ISO_9899.Errno.current
+            throw Error.current
         }
         return unsafe result
     }
@@ -19,10 +19,10 @@ extension ISO_9899.Errno.Require {
     @inline(always)
     public static func rawPointer(
         _ operation: () -> UnsafeMutableRawPointer?
-    ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
+    ) throws(ISO_9899.Errno.Require.Error) -> UnsafeMutableRawPointer {
         ISO_9899.Errno.clear()
         guard let result = unsafe operation() else {
-            throw ISO_9899.Errno.current
+            throw Error.current
         }
         return unsafe result
     }
@@ -30,11 +30,11 @@ extension ISO_9899.Errno.Require {
     @inline(always)
     public static func int(
         _ operation: () -> Int32
-    ) throws(ISO_9899.Errno.Code) -> Int32 {
+    ) throws(ISO_9899.Errno.Require.Error) -> Int32 {
         ISO_9899.Errno.clear()
         let result = operation()
         guard result != -1 else {
-            throw ISO_9899.Errno.current
+            throw Error.current
         }
         return result
     }
@@ -42,11 +42,11 @@ extension ISO_9899.Errno.Require {
     @inline(always)
     public static func nonZero(
         _ operation: () -> Int32
-    ) throws(ISO_9899.Errno.Code) -> Int32 {
+    ) throws(ISO_9899.Errno.Require.Error) -> Int32 {
         ISO_9899.Errno.clear()
         let result = operation()
         guard result != 0 else {
-            throw ISO_9899.Errno.current
+            throw Error.current
         }
         return result
     }

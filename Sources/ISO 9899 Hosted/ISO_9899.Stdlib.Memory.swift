@@ -10,7 +10,7 @@ extension ISO_9899.Stdlib.Memory {
     @inline(always)
     public static func allocate(
         count: Int
-    ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
+    ) throws(ISO_9899.Errno.Require.Error) -> UnsafeMutableRawPointer {
         try unsafe ISO_9899.Errno.Require.rawPointer {
             unsafe iso9899_malloc(count)
         }
@@ -20,7 +20,7 @@ extension ISO_9899.Stdlib.Memory {
     public static func allocateZeroed(
         count: Int,
         size: Int
-    ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
+    ) throws(ISO_9899.Errno.Require.Error) -> UnsafeMutableRawPointer {
         try unsafe ISO_9899.Errno.Require.rawPointer {
             unsafe iso9899_calloc(count, size)
         }
@@ -30,7 +30,7 @@ extension ISO_9899.Stdlib.Memory {
     public static func reallocate(
         _ pointer: UnsafeMutableRawPointer?,
         count: Int
-    ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
+    ) throws(ISO_9899.Errno.Require.Error) -> UnsafeMutableRawPointer {
         try unsafe ISO_9899.Errno.Require.rawPointer {
             unsafe iso9899_realloc(pointer, count)
         }
@@ -40,7 +40,7 @@ extension ISO_9899.Stdlib.Memory {
     public static func allocateAligned(
         alignment: Int,
         size: Int
-    ) throws(ISO_9899.Errno.Code) -> UnsafeMutableRawPointer {
+    ) throws(ISO_9899.Errno.Require.Error) -> UnsafeMutableRawPointer {
         try unsafe ISO_9899.Errno.Require.rawPointer {
             unsafe iso9899_aligned_alloc(alignment, size)
         }
