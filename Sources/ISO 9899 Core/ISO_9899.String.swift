@@ -20,12 +20,10 @@ extension ISO_9899.String {
 
     @inlinable
     public init(allocated pointer: UnsafeMutablePointer<ISO_9899.String.Char>, count: Int) {
-        #if DEBUG
-            precondition(
-                unsafe (pointer[count] == ISO_9899.String.terminator),
-                "ISO_9899.String: adopted buffer must be null-terminated"
-            )
-        #endif
+        precondition(
+            unsafe (pointer[count] == ISO_9899.String.terminator),
+            "ISO_9899.String: adopted buffer must be null-terminated"
+        )
         unsafe (self.pointer = pointer)
         self.count = count
     }

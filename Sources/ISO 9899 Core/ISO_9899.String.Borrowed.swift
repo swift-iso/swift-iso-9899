@@ -13,12 +13,10 @@ extension ISO_9899.String {
         @inlinable
         @_lifetime(borrow pointer)
         public init(_ pointer: UnsafePointer<ISO_9899.String.Char>, count: Int) {
-            #if DEBUG
-                precondition(
-                    unsafe (pointer[count] == ISO_9899.String.terminator),
-                    "ISO_9899.String.Borrowed: pointer[count] must be the null terminator"
-                )
-            #endif
+            precondition(
+                unsafe (pointer[count] == ISO_9899.String.terminator),
+                "ISO_9899.String.Borrowed: pointer[count] must be the null terminator"
+            )
             unsafe (self.pointer = pointer)
             self.count = count
         }

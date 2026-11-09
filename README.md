@@ -11,5 +11,5 @@ Use this package when you need the C standard library from Swift without Foundat
 - The `ISO_9899.Errno.Require` helpers clear errno, run the call, and throw `ISO_9899.Errno.Require.Error.code(_:)` with the current errno if the result signals failure: a nil pointer, -1, or zero for `ISO_9899.Errno.Require.nonZero(_:)`. A call that fails without setting errno throws `ISO_9899.Errno.Require.Error.unset`.
 - `ISO_9899.Errno.capture(_:)` clears errno before the call, so the code it returns was set by that call or is zero.
 - An `ISO_9899.String` owns its buffer and frees it with Swift's `deallocate()` when it goes away, so `ISO_9899.String(allocated:count:)` takes only a buffer from `UnsafeMutablePointer.allocate(capacity:)`, never one from `malloc` or a C API. `ISO_9899.String.take()` hands the buffer back without freeing it, for `deallocate()`. `ISO_9899.String.count` does not include the terminator.
-- `ISO_9899.String` and `ISO_9899.String.Borrowed` check that the byte at `count` is the terminator only in debug builds.
+- `ISO_9899.String` and `ISO_9899.String.Borrowed` trap, in release builds too, when the byte at `count` is not the terminator.
 - `ISO_9899.String.Comparison.compare(_:_:)` reduces the C result to less, equal or greater, and `ISO_9899.String.Comparison.equals(_:_:)` is true only when the string ends exactly where the literal ends.
