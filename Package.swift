@@ -60,6 +60,11 @@ let package = Package(
             dependencies: [],
             publicHeadersPath: "include"
         ),
+        .target(
+            name: "ISO 9899 Stdio Shims",
+            dependencies: [],
+            publicHeadersPath: "include"
+        ),
 
         .target(
             name: "ISO 9899 Core",
@@ -82,6 +87,7 @@ let package = Package(
                 .target(name: "ISO 9899 Core"),
                 .target(name: "ISO 9899 Ctype Shims"),
                 .target(name: "ISO 9899 Stdlib Shims"),
+                .target(name: "ISO 9899 Stdio Shims"),
             ],
             path: "Sources/ISO 9899 Hosted",
             swiftSettings: [
